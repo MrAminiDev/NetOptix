@@ -18,10 +18,10 @@ while true; do
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "                         ${RED}NetOptix V1.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo "1- Hybla"
-    echo "2- BBR"
+    echo "1- install Hybla"
+    echo "2- install BBR"
     echo "3- Delete Optimize"
-    echo "4- Exit"
+    echo "4- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
