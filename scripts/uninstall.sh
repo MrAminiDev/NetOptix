@@ -1,5 +1,5 @@
 cloner() {
-		sed -i '/#Hybla optimize network traffic/,/#Github: https:\/\/github.com\/MrAminiNezhad\//d' /etc/sysctl.conf
+		sed -i '/#NetOptix optimize network traffic/,/#Github: https:\/\/github.com\/MrAminiDev\//d' /etc/sysctl.conf
 		sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
 		sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
 		sed -i '/net.core.optmem_max/d' /etc/sysctl.conf
@@ -63,7 +63,7 @@ endInstall() {
     clear
     echo "The script was successfully uninstalled and all settings were removed"
 	read -p "Press Enter to continue..."
-	bash <(curl -s https://mm.ir/run.sh)
+	bash <(curl -s https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh)
 }
 
 save_config
