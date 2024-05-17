@@ -24,7 +24,7 @@ while true; do
     case $choice in
         1)
             echo "Running Hybla script..."
-            curl -fsSL https://mt.ir/hybla.sh | bash
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh | bash
             ;;
         2)
             echo "Running BBR script..."
@@ -32,7 +32,7 @@ while true; do
             ;;
         3)
             echo "Running Uninstall script..."
-            curl -fsSL https://mt.ir/uninstall.sh | bash
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash
             ;;
         4)
             echo "Exiting..."
