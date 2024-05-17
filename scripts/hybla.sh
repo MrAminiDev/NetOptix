@@ -138,9 +138,9 @@ save_config() {
 }
 endInstall() {
     clear
-    echo "The script was successfully installed and all settings were applied"
-    read -s -n 1 key
-	bash <(curl -s https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh)
+    echo "The script was successfully uninstalled and all settings were removed"
+	read -p "Press Enter to continue..."
+	xdg-open https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh
 }
 
 display_menu
