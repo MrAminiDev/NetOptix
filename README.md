@@ -29,3 +29,6 @@ Using network optimization can lead to multiple advantages:
 
 # Installation Script
 To install, simply run the following command on your server
+```
+bash <(curl -Ls https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh)
+```
