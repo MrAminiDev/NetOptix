@@ -28,7 +28,7 @@ while true; do
             ;;
         2)
             echo "Running BBR script..."
-            curl -fsSL https://mt.ir/bbr.sh | bash
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh | bash
             ;;
         3)
             echo "Running Uninstall script..."
