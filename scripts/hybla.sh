@@ -140,7 +140,7 @@ endInstall() {
     clear
     echo "The script was successfully installed and all settings were applied"
     read -s -n 1 key
-	bash <(curl -s https://mm.ir/run.sh)
+	bash <(curl -s https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh)
 }
 
 display_menu
