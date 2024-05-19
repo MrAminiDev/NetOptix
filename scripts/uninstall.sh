@@ -63,7 +63,6 @@ endInstall() {
     clear
     echo "The script was successfully uninstalled and all settings were removed"
 	read -p "Press Enter to continue..."
-  	curl -s https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh | bash
     }
 
 save_config
