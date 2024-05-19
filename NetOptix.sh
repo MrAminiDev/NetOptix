@@ -29,22 +29,22 @@ while true; do
         1)
             echo "Running Hybla script..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh | bash
+            bash <(curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh)
             ;;
         2)
             echo "Running BBR script..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh | bash
+            bash <(curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh)
             ;;
         3)
             echo "Running Uninstall script..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash
+            bash <(curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh)
             ;;
         4)
             echo "Running Swap script..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash
+            bash <(curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh)
             ;;
         5)
             echo "Exiting..."
