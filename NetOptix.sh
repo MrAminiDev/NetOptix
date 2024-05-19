@@ -21,24 +21,34 @@ while true; do
     echo "1- install Hybla"
     echo "2- install BBR"
     echo "3- Delete Optimize"
-    echo "4- Exit menu"
+    echo "4- Create Swap"
+    echo "5- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
         1)
             echo "Running Hybla script..."
+            sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh | bash
             ;;
         2)
             echo "Running BBR script..."
+            sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh | bash
             ;;
         3)
             echo "Running Uninstall script..."
+            sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash
             ;;
         4)
+            echo "Running Swap script..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash
+            ;;
+        5)
             echo "Exiting..."
+            sleep 2
             exit 0
             ;;
         *)
