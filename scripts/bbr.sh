@@ -374,7 +374,6 @@ endInstall() {
     clear
     echo "The script was successfully Install BBR and all settings Updated."
     read -p "Press Enter to continue..."
-    xdg-open https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh
 }
 
 endInstall
