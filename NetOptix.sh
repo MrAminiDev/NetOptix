@@ -29,22 +29,30 @@ while true; do
         1)
             echo "Running Hybla script..."
             sleep 2
-            (curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh | bash)
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh -o /tmp/hybla.sh
+            bash /tmp/hybla.sh
+            rm /tmp/hybla.sh
             ;;
         2)
             echo "Running BBR script..."
             sleep 2
-            (curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh | bash)
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh -o /tmp/bbr.sh
+            bash /tmp/bbr.sh
+            rm /tmp/bbr.sh
             ;;
         3)
             echo "Running Uninstall script..."
             sleep 2
-            (curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash)
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh -o /tmp/uninstall.sh
+            bash /tmp/uninstall.sh
+            rm /tmp/uninstall.sh
             ;;
         4)
             echo "Running Swap script..."
             sleep 2
-            (curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash)
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/swap.sh -o /tmp/swap.sh
+            bash /tmp/swap.sh
+            rm /tmp/swap.sh
             ;;
         5)
             echo "Exiting..."
@@ -53,9 +61,7 @@ while true; do
             ;;
         *)
             echo "Invalid choice. Please enter a valid option."
+            read -p "Press Enter to continue..."
             ;;
     esac
-
-    read -p "Press Enter to continue..."
 done
-
