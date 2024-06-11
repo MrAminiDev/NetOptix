@@ -81,6 +81,12 @@ find_max_mtu() {
     fi
 }
 
+endInstall() {
+    clear
+    echo "The script was successfully Install and Fix MTU Size."
+    read -p "Press Enter to continue..."
+}
+
 main() {
     check_requirements
 
@@ -91,6 +97,8 @@ main() {
     else
         find_max_mtu $dest_ip "IPv6"
     fi
+	
+	endInstall
 }
 
 main
