@@ -87,6 +87,7 @@ endInstall() {
     read -p "Press Enter to continue..."
 }
 
+
 main() {
     check_requirements
 
