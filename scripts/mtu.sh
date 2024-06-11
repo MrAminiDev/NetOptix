@@ -99,6 +99,8 @@ main() {
         find_max_mtu $dest_ip "IPv6"
     fi
 	
+	sleep 3
+	
 	endInstall
 }
 
