@@ -63,8 +63,7 @@ endInstall() {
     clear
     echo "The script was successfully uninstalled and all settings were removed"
 	read -p "Press Enter to continue..."
-	xdg-open https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh
-}
+    }
 
 save_config
 endInstall

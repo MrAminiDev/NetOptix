@@ -16,36 +16,52 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.1.0 Beta  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
     echo "3- Delete Optimize"
-    echo "4- Exit menu"
+    echo "4- Create Swap"
+    echo "5- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
         1)
             echo "Running Hybla script..."
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh | bash
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh -o /tmp/hybla.sh
+            bash /tmp/hybla.sh
+            rm /tmp/hybla.sh
             ;;
         2)
             echo "Running BBR script..."
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh | bash
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh -o /tmp/bbr.sh
+            bash /tmp/bbr.sh
+            rm /tmp/bbr.sh
             ;;
         3)
             echo "Running Uninstall script..."
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh | bash
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh -o /tmp/uninstall.sh
+            bash /tmp/uninstall.sh
+            rm /tmp/uninstall.sh
             ;;
         4)
+            echo "Running Swap script..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/swap.sh -o /tmp/swap.sh
+            bash /tmp/swap.sh
+            rm /tmp/swap.sh
+            ;;
+        5)
             echo "Exiting..."
+            sleep 2
             exit 0
             ;;
         *)
             echo "Invalid choice. Please enter a valid option."
+            read -p "Press Enter to continue..."
             ;;
     esac
-
-    read -p "Press Enter to continue..."
 done
-

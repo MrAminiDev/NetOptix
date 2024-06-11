@@ -24,8 +24,9 @@ Using network optimization can lead to multiple advantages:
 # Tools Available in the NetOptix Script
 1. Installation of Hybla optimization script
 2. Installation of BBR optimization script
-3. Uninstallation of installed optimizers
-4. Other features coming soon...
+3. Convenient creation of swap space
+4. Uninstallation of installed optimizers
+5. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
