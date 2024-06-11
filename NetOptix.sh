@@ -16,12 +16,13 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.1.0 Beta  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.2.0 Beta  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
-    echo "3- Delete Optimize"
+    echo "3- Delete Optimize ( BBR and Hybla )"
     echo "4- Create Swap"
+    echo "5- MTU Finder"
     echo "5- Exit menu"
     read -p "Enter your choice: " choice
 
@@ -55,6 +56,13 @@ while true; do
             rm /tmp/swap.sh
             ;;
         5)
+            echo "Running MTU finder script..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtu.sh -o /tmp/mtu.sh
+            bash /tmp/mtu.sh
+            rm /tmp/mtu.sh
+            ;;
+        6)
             echo "Exiting..."
             sleep 2
             exit 0
