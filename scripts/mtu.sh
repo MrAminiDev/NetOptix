@@ -38,7 +38,7 @@ show_menu() {
         exit 1
     fi
 
-    read -p "Is the default network interface eth0? (In Hezner datacenter, the default is eth0) [Y/N]: " default_iface
+    read -p "Is the default network interface eth0?(Hetzner datacenter, the default is eth0) [Y/N]: " default_iface
 
     if [[ $default_iface == "Y" || $default_iface == "y" ]]; then
         interface="eth0"
