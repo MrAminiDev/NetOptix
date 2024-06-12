@@ -43,7 +43,7 @@ find_max_mtu() {
     local ip=$1
     local proto=$2
     local interface="eth0" 
-    local min_mtu=1000
+    local min_mtu=600
     local max_mtu=1500
     local current_mtu=$min_mtu
     local last_successful_mtu=$min_mtu
