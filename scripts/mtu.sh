@@ -8,7 +8,6 @@
 #
 # my Github: https://github.com/MrAminiDev/
 
-
 check_requirements() {
     local requirements=("ping" "ping6" "ip")
 
