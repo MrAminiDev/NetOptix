@@ -26,7 +26,8 @@ Using network optimization can lead to multiple advantages:
 2. Installation of BBR optimization script
 3. Convenient creation of swap space
 4. Uninstallation of installed optimizers
-5. Other features coming soon...
+5. Find the MTU value automatically
+6. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server

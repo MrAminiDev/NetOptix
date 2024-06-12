@@ -23,7 +23,7 @@ while true; do
     echo "3- Delete Optimize ( BBR and Hybla )"
     echo "4- Create Swap"
     echo "5- MTU Finder"
-    echo "5- Exit menu"
+    echo "6- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
