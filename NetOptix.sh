@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.2.0 Beta  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.2.3 Beta  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -64,7 +64,7 @@ while true; do
             ;;
         6)
             echo "Exiting..."
-            sleep 2
+            sleep 3
             exit 0
             ;;
         *)
