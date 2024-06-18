@@ -52,7 +52,7 @@ find_max_mtu() {
     local ip=$1
     local proto=$2
     local step_size=$3
-    local min_mtu=1000
+    local min_mtu=700
     local max_mtu=1500
     local last_successful_mtu=$max_mtu
 
@@ -96,10 +96,10 @@ find_max_mtu() {
 
     echo "The maximum MTU for $proto on $ip is: $last_successful_mtu"
     echo "Suggested MTU setting: $final_mtu"
+    sleep 10
 }
 
 main() {
-    # چک کردن پیش‌نیازها
     check_requirements
 
     show_menu
