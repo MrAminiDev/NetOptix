@@ -24,7 +24,7 @@ while true; do
     echo "4- Create Swap"
     echo "5- MTU Finder + auto set"
     echo "6- MTU Finder"
-    echo "6- Exit menu"
+    echo "7- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
