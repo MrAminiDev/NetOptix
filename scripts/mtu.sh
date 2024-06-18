@@ -1,4 +1,11 @@
 #!/bin/bash
+# Auto install Finder MTU
+#
+# System Required:  CentOS 6+, Debian8+, Ubuntu16+
+#
+# Copyright (C) 2024 Mr.Amini Nezhad
+#
+# my Github: https://github.com/MrAminiDev/
 
 check_requirements() {
     local requirements=("ping" "ping6" "ip")
