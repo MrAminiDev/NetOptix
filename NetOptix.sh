@@ -22,7 +22,8 @@ while true; do
     echo "2- install BBR"
     echo "3- Delete Optimize ( BBR and Hybla )"
     echo "4- Create Swap"
-    echo "5- MTU Finder"
+    echo "5- MTU Finder + auto set"
+    echo "6- MTU Finder"
     echo "6- Exit menu"
     read -p "Enter your choice: " choice
 
@@ -56,13 +57,20 @@ while true; do
             rm /tmp/swap.sh
             ;;
         5)
-            echo "Running MTU finder script..."
+            echo "Running MTU finder + auto set script..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtu.sh -o /tmp/mtu.sh
             bash /tmp/mtu.sh
             rm /tmp/mtu.sh
             ;;
         6)
+            echo "Running MTU finder script..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtunoset.sh -o /tmp/mtunoset.sh
+            bash /tmp/mtunoset.sh
+            rm /tmp/mtunoset.sh
+            ;;
+        7)
             echo "Exiting..."
             sleep 3
             exit 0
