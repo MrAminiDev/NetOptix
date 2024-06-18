@@ -108,8 +108,8 @@ main() {
     else
         find_max_mtu $dest_ip "IPv6" $step_size
     fi
-}
-
     echo "Exiting in 10 seconds..."
     sleep 10
+}
+
 main
