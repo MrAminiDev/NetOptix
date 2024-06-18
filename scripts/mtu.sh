@@ -1,12 +1,4 @@
 #!/bin/bash
-#
-# Auto install Finder MTU
-#
-# System Required:  CentOS 6+, Debian8+, Ubuntu16+
-#
-# Copyright (C) 2024 Mr.Amini Nezhad
-#
-# my Github: https://github.com/MrAminiDev/
 
 check_requirements() {
     local requirements=("ping" "ping6" "ip")
@@ -52,12 +44,22 @@ show_menu() {
         echo "Invalid choice. Exiting."
         exit 1
     fi
+
+    while true; do
+        read -p "Enter incremental step (1-10): " step_size
+        if [[ $step_size -ge 1 && $step_size -le 10 ]]; then
+            break
+        else
+            echo "Invalid step size. Please enter a number between 1 and 10."
+        fi
+    done
 }
 
 find_max_mtu() {
     local ip=$1
     local proto=$2
     local interface=$3
+    local step_size=$4
     local min_mtu=700
     local max_mtu=1500
     local last_successful_mtu=$max_mtu
@@ -101,7 +103,7 @@ find_max_mtu() {
             fi
         fi
 
-        ((current_mtu+=10))
+        ((current_mtu+=step_size))
         sleep 1
     done
 
@@ -118,30 +120,16 @@ find_max_mtu() {
     fi
 }
 
-
-endInstall() {
-    clear
-    echo "The script was successfully Install and Fix MTU Size."
-    read -p "Press Enter to continue..."
-}
-
-
 main() {
-
     check_requirements
 
     show_menu
 
     if [[ $ip_type -eq 1 ]]; then
-        find_max_mtu $dest_ip "IPv4" $interface
+        find_max_mtu $dest_ip "IPv4" $interface $step_size
     else
-        find_max_mtu $dest_ip "IPv6" $interface
+        find_max_mtu $dest_ip "IPv6" $interface $step_size
     fi
-		
-	sleep 5
-	
-	endInstall
 }
 
 main
-
