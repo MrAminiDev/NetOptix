@@ -24,7 +24,9 @@ while true; do
     echo "4- Create Swap"
     echo "5- MTU Finder + auto set"
     echo "6- MTU Finder"
-    echo "7- Exit menu"
+    echo "7- Disable Server Ping"
+    echo "8- Enable Server Ping"
+    echo "9- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -71,6 +73,20 @@ while true; do
             rm /tmp/mtunoset.sh
             ;;
         7)
+            echo "Running Server Ping Blocker..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/DPing.sh -o /tmp/DPing.sh
+            bash /tmp/DPing.sh
+            rm /tmp/DPing.sh
+            ;;
+        8)
+            echo "Running Server Ping UnBlocker..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/EPing.sh -o /tmp/EPing.sh
+            bash /tmp/EPing.sh
+            rm /tmp/EPing.sh
+            ;;
+        9)
             echo "Exiting..."
             sleep 3
             exit 0
