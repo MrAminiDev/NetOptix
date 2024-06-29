@@ -27,3 +27,8 @@ curl -s -LO https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/b
 cat Thosts >> /etc/hosts
 sort -uf /etc/hosts > /etc/hosts.uniq && mv /etc/hosts{.uniq,}
 echo "${OK}"
+
+
+echo "All torrent Trafic Bloacked."
+
+sleep 5
