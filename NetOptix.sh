@@ -87,6 +87,13 @@ while true; do
             rm /tmp/EPing.sh
             ;;
         9)
+            echo "Running Block torrent list..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/blocktorrent/blocktorrent.sh -o /tmp/blocktorrent.sh
+            bash /tmp/blocktorrent.sh
+            rm /tmp/blocktorrent.sh
+            ;;
+        10)
             echo "Exiting..."
             sleep 3
             exit 0
