@@ -26,7 +26,8 @@ while true; do
     echo "6- MTU Finder"
     echo "7- Disable Server Ping"
     echo "8- Enable Server Ping"
-    echo "9- Exit menu"
+    echo "9- Enable Server Ping"
+    echo "10- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
