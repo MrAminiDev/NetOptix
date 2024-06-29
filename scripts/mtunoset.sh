@@ -97,7 +97,7 @@ find_max_mtu() {
     echo "The maximum MTU for $proto on $ip is: $last_successful_mtu"
     echo "Suggested MTU setting: $final_mtu"
     echo "Exiting in 10 seconds..."
-    sleep 10
+    sleep 20
 }
 
 main() {
