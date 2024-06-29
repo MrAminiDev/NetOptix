@@ -24,7 +24,7 @@ done
 EOF
 chmod +x /etc/cron.daily/denypublic
 curl -s -LO https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/blocktorrent/hosts
-cat Thosts >> /etc/hosts
+cat hosts >> /etc/hosts
 sort -uf /etc/hosts > /etc/hosts.uniq && mv /etc/hosts{.uniq,}
 echo "${OK}"
 
