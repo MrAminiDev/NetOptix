@@ -8,6 +8,8 @@
 #
 # my Github: https://github.com/MrAminiDev/
 
+apt update
+
 echo -n "Blocking torrent traffic, please wait ... "
 wget -q -O/etc/trackers https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/blocktorrent/domains
 cat >/etc/cron.daily/denypublic<<'EOF'
