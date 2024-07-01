@@ -29,7 +29,8 @@ Using network optimization can lead to multiple advantages:
 5. Find the MTU value automatically
 6. The ability to turn off and on the server ping
 7. Blocking more than 4000 torrent sites to prevent abuses
-8. Other features coming soon...
+8. Change atuo DNS server
+9. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
