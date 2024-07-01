@@ -27,7 +27,8 @@ while true; do
     echo "7- Disable Server Ping"
     echo "8- Enable Server Ping"
     echo "9- Block torrent list"
-    echo "10- Exit menu"
+    echo "10- Change Server DNS"
+    echo "11- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -95,6 +96,13 @@ while true; do
             rm /tmp/blocktorrent.sh
             ;;
         10)
+            echo "Running Server DNS changer..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
+            bash /tmp/dns.sh
+            rm /tmp/dns.sh
+            ;;
+        11)
             echo "Exiting..."
             sleep 3
             exit 0
