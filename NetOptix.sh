@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.5.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.6.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -28,7 +28,9 @@ while true; do
     echo "8- Enable Server Ping"
     echo "9- Block torrent list"
     echo "10- Change Server DNS"
-    echo "11- Exit menu"
+    echo "11- change SSH port"
+    echo "12- Block and unBlock Private network"
+    echo "13- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -103,6 +105,20 @@ while true; do
             rm /tmp/dns.sh
             ;;
         11)
+            echo "Running SSH port changer..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
+            bash /tmp/dns.sh
+            rm /tmp/dns.sh
+            ;;
+        12)
+            echo "Running Private network blocker an unblocker..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
+            bash /tmp/dns.sh
+            rm /tmp/dns.sh
+            ;;
+        13)
             echo "Exiting..."
             sleep 3
             exit 0
