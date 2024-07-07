@@ -107,16 +107,16 @@ while true; do
         11)
             echo "Running SSH port changer..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
-            bash /tmp/dns.sh
-            rm /tmp/dns.sh
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/cport.sh -o /tmp/cport.sh
+            bash /tmp/cport.sh
+            rm /tmp/cport.sh
             ;;
         12)
             echo "Running Private network blocker an unblocker..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
-            bash /tmp/dns.sh
-            rm /tmp/dns.sh
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/pib.sh -o /tmp/pib.sh
+            bash /tmp/pib.sh
+            rm /tmp/pib.sh
             ;;
         13)
             echo "Exiting..."
