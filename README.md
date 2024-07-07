@@ -30,7 +30,9 @@ Using network optimization can lead to multiple advantages:
 6. The ability to turn off and on the server ping
 7. Blocking more than 4000 torrent sites to prevent abuses
 8. Change auto DNS server
-9. Other features coming soon...
+9. Blocking all IP ranges of the private network to prevent NetScan and abuse
+10. Change server port automatically
+11. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
