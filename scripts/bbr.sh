@@ -333,8 +333,9 @@ reboot_os() {
 install_bbr() {
     if check_bbr_status; then
         echo
-        _info "TCP BBR has already been enabled. nothing to do..."
-        exit 0
+        _info "The script was successfully Install BBR and all settings Updated."
+		sleep 5
+        read -p "Press Enter to continue..."
     fi
     if check_kernel_version; then
         echo
@@ -367,13 +368,7 @@ echo "Coded By: https://github.com/MrAminiDev/"
 echo "----------------------------------------"
 echo
 echo "Press any key to start...or Press Ctrl+C to cancel"
-
 char=$(get_char)
 
-endInstall() {
-    clear
-    echo "The script was successfully Install BBR and all settings Updated."
-    read -p "Press Enter to continue..."
-}
+install_bbr 2>&1 | tee ${cur_dir}/install_bbr.log
 
-endInstall
