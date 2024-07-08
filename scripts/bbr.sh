@@ -334,8 +334,8 @@ install_bbr() {
     if check_bbr_status; then
         echo
         _info "The script was successfully Install BBR and all settings Updated."
-		sleep 5
-        read -p "Press Enter to continue..."
+	sleep 5
+        exit 0
     fi
     if check_kernel_version; then
         echo
