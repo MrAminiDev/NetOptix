@@ -50,6 +50,7 @@ cloner() {
 		sed -i '/vm.min_free_kbytes/d' /etc/sysctl.conf
 		sed -i '/vm.swappiness/d' /etc/sysctl.conf
 		sed -i '/vm.vfs_cache_pressure/d' /etc/sysctl.conf
+		echo 'net.ipv4.tcp_congestion_control=cubic' >> /etc/sysctl.conf
 		sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub
 		sudo update-grub
 	}
@@ -65,5 +66,6 @@ endInstall() {
 	read -p "Press Enter to continue..."
     }
 
+cloner
 save_config
 endInstall
