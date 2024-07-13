@@ -88,7 +88,7 @@ show_isp_menu() {
                 break
                 ;;
             4)
-                return
+                return 1
                 ;;
             *)
                 echo "Invalid choice. Please try again."
