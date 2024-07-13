@@ -100,7 +100,7 @@ show_isp_menu() {
 main_menu() {
     clear
     while true; do
-		echo "Please choose one of the options below"
+        echo "Please choose one of the options below"
         echo "1) Block ISP"
         echo "2) Unblock ISP"
         echo "3) Unblock all ISP"
@@ -110,11 +110,15 @@ main_menu() {
         case $main_choice in
             1)
                 show_isp_menu
-                block_ips $isp_url $isp_name
+                if [ $? -eq 0 ]; then
+                    block_ips $isp_url $isp_name
+                fi
                 ;;
             2)
                 show_isp_menu
-                unblock_ips $isp_url $isp_name
+                if [ $? -eq 0 ]; then
+                    unblock_ips $isp_url $isp_name
+                fi
                 ;;
             3)
                 unblock_all
