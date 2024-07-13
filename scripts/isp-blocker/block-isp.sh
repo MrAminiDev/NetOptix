@@ -68,7 +68,8 @@ show_isp_menu() {
         echo "1) Irancell"
         echo "2) Hamrah-Aval (MCI)"
         echo "3) Rightel"
-        echo "4) Back to main menu"
+        echo "4) Shatel"
+        echo "5) Back to main menu"
         read -p "Enter your choice: " isp_choice
 
         case $isp_choice in
@@ -88,6 +89,11 @@ show_isp_menu() {
                 break
                 ;;
             4)
+                isp_url="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/isp/shatel.ipv4"
+                isp_name="Shatel"
+                break
+                ;;
+            5)
                 return 1
                 ;;
             *)
