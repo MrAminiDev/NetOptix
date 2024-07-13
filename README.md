@@ -1,5 +1,7 @@
 <div align="center"><img src="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/demo/NetOptix.JPG" width="500"></div>
-<div align="center">
+<div align="center"><br>
+Warning, this script may not be compatible with Ubuntu 24.04, make sure to make a backup copy before using the commands.
+  <br>
   برای توضیحات <a href="https://github.com/MrAminiDev/NetOptix/blob/main/README-fa.md"> فارسی اینجا بزنید </a>
 
 </div>
@@ -32,7 +34,8 @@ Using network optimization can lead to multiple advantages:
 8. Change auto DNS server
 9. Blocking all IP ranges of the private network to prevent NetScan and abuse
 10. Change server port automatically
-11. Other features coming soon...
+11. Blocking Iranian ISPs separately
+12. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
