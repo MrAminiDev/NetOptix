@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.6.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.7.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -30,7 +30,8 @@ while true; do
     echo "10- Change Server DNS"
     echo "11- change SSH port"
     echo "12- Block and unBlock Private network"
-    echo "13- Exit menu"
+    echo "13- Block and unBlock Iranian ISP"
+    echo "14- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -119,6 +120,13 @@ while true; do
             rm /tmp/pib.sh
             ;;
         13)
+            echo "Running Iran ISP blocker an unblocker..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/block-isp.sh -o /tmp/block-isp.sh
+            bash /tmp/block-isp.sh
+            rm /tmp/block-isp.sh
+            ;;
+        14)
             echo "Exiting..."
             sleep 3
             exit 0
