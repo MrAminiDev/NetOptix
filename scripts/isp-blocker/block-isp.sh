@@ -90,6 +90,7 @@ show_isp_menu() {
 
 main_menu() {
     clear
+    echo "Please choose one of the options below"
     echo "1) Block ISP"
     echo "2) Unblock ISP"
     echo "3) Unblock all ISP"
