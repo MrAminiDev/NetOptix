@@ -42,3 +42,8 @@ To install, simply run the following command on your server
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh)
 ```
+##  Support with Crypto 
+- TRX : `TQhwK6q94GgpUZSsHBjiUWc6xAHz5Df9mW`
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/MrAminiDev/NetOptix.svg?variant=adaptive)](https://starchart.cc/MrAminiDev/NetOptix)
