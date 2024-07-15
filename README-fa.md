@@ -43,3 +43,9 @@
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/NetOptix.sh)
 ```
+
+##  حمایت از پروژه با ارز دیجیتال 
+- TRX : `TQhwK6q94GgpUZSsHBjiUWc6xAHz5Df9mW`
+
+## حمایت با ستاره در مدت زمان
+[![Stargazers over time](https://starchart.cc/MrAminiDev/NetOptix.svg?variant=adaptive)](https://starchart.cc/MrAminiDev/NetOptix)
