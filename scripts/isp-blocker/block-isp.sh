@@ -69,7 +69,8 @@ show_isp_menu() {
         echo "2) Hamrah-Aval (MCI)"
         echo "3) Rightel"
         echo "4) Shatel"
-        echo "5) Back to main menu"
+        echo "5) ICT ( Mokhaberat )
+        echo "6) Back to main menu"
         read -p "Enter your choice: " isp_choice
 
         case $isp_choice in
@@ -94,6 +95,11 @@ show_isp_menu() {
                 break
                 ;;
             5)
+                isp_url="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/isp/ict.ipv4"
+                isp_name="ICT ( Mokhaberat )"
+                break
+                ;;
+            6)
                 return 1
                 ;;
             *)
