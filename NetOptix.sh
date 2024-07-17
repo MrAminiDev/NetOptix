@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.7.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.8.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -31,7 +31,8 @@ while true; do
     echo "11- change SSH port"
     echo "12- Block and unBlock Private network"
     echo "13- Block and unBlock Iranian ISP"
-    echo "14- Exit menu"
+    echo "14- Install fail2ban for ssh security"
+    echo "15- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -127,6 +128,13 @@ while true; do
             rm /tmp/block-isp.sh
             ;;
         14)
+            echo "Running installer fail2ban script for ssh security..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/fail2ban.sh -o /tmp/fail2ban.sh
+            bash /tmp/fail2ban.sh
+            rm /tmp/fail2ban.sh
+            ;;
+        15)
             echo "Exiting..."
             sleep 3
             exit 0
