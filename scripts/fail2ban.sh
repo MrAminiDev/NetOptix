@@ -59,12 +59,15 @@ while true; do
     case $choice in
         1)
             install_and_configure_fail2ban
+            break
             ;;
         2)
             disable_fail2ban
+            break
             ;;
         3)
             clear_ban_list
+            break
             ;;
         4)
             echo "Exiting the script."
