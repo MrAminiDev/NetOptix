@@ -49,6 +49,7 @@ clear_ban_list() {
 }
 
 while true; do
+    clear
     echo "Please select an option:"
     echo "1 - Enable fail2ban"
     echo "2 - Disable fail2ban"
