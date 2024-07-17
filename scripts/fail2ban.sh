@@ -71,12 +71,11 @@ while true; do
             break
             ;;
         4)
-            echo "Exiting the script."
             exit 0
             ;;
         *)
             echo "Invalid option, please try again."
-            sleep 2
+            sleep 1
             ;;
     esac
 done
