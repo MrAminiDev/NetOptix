@@ -35,7 +35,8 @@ Using network optimization can lead to multiple advantages:
 9. Blocking all IP ranges of the private network to prevent NetScan and abuse
 10. Change server port automatically
 11. Blocking Iranian ISPs separately
-12. Other features coming soon...
+12. Install and configure fail2ban automatically to increase ssh security
+13. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
