@@ -70,7 +70,10 @@ show_isp_menu() {
         echo "3) Rightel"
         echo "4) Shatel"
         echo "5) ICT ( Mokhaberat )
-        echo "6) Back to main menu"
+        echo "6) AfraNet
+        echo "7) ParsOnline
+        echo "8) AsiaTech
+        echo "9) Back to main menu"
         read -p "Enter your choice: " isp_choice
 
         case $isp_choice in
@@ -100,6 +103,21 @@ show_isp_menu() {
                 break
                 ;;
             6)
+                isp_url="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/isp/afranet.ipv4"
+                isp_name="AfraNet"
+                break
+                ;;
+            7)
+                isp_url="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/isp/parsonline.ipv4"
+                isp_name="ParsOnline"
+                break
+                ;;
+            8)
+                isp_url="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/isp/asiatech.ipv4"
+                isp_name="AsiaTech"
+                break
+                ;;
+            9)
                 return 1
                 ;;
             *)
