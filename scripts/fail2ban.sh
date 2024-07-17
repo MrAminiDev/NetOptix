@@ -49,31 +49,27 @@ clear_ban_list() {
 }
 
 while true; do
-    clear
     echo "Please select an option:"
     echo "1 - Enable fail2ban"
     echo "2 - Disable fail2ban"
     echo "3 - Clean ban list"
-    echo "4 - Exit"
     read -rp "Enter your choice: " choice
 
     case $choice in
         1)
             install_and_configure_fail2ban
+            break
             ;;
         2)
             disable_fail2ban
+            break
             ;;
         3)
             clear_ban_list
-            ;;
-        4)
-            echo "Exiting the script."
-            exit 0
+            break
             ;;
         *)
             echo "Invalid option, please try again."
-            sleep 2
             ;;
     esac
 done
