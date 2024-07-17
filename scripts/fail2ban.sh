@@ -53,7 +53,6 @@ while true; do
     echo "1 - Enable fail2ban"
     echo "2 - Disable fail2ban"
     echo "3 - Clean ban list"
-    echo "4 - Exit"
     read -rp "Enter your choice: " choice
 
     case $choice in
@@ -68,10 +67,6 @@ while true; do
         3)
             clear_ban_list
             break
-            ;;
-        4)
-            echo "Exiting the script."
-            exit 0
             ;;
         *)
             echo "Invalid option, please try again."
