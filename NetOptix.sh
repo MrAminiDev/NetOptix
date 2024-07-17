@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.8.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.8.1  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
