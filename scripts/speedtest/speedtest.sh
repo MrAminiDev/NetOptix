@@ -9,25 +9,18 @@
 # my Github: https://github.com/MrAminiDev/
 
 command -v iptables >/dev/null 2>&1 || { echo >&2 "iptables is required but it's not installed. Aborting."; exit 1; }
+command -v curl >/dev/null 2>&1 || { echo >&2 "curl is required but it's not installed. Aborting."; exit 1; }
 
-LIST_FILE="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.list"
+LIST_URL="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.list"
 IPTABLES_SAVE="/etc/iptables/rules.v4"
 
-# Function to block sites and IPs
 block_sites() {
-    if [ ! -f "$LIST_FILE" ]; then
-        echo "The list file $LIST_FILE does not exist."
-        exit 1
-    fi
-    
-    while IFS= read -r site; do
-        # Blocking by domain name
+    curl -s "$LIST_URL" | while IFS= read -r site; do
         iptables -A OUTPUT -p tcp -m string --string "$site" --algo bm --to 65535 -j REJECT
-        # Resolving domain to IP and blocking by IP address
         for ip in $(dig +short "$site"); do
             iptables -A OUTPUT -d "$ip" -j REJECT
         done
-    done < "$LIST_FILE"
+    done
 
     iptables-save > "$IPTABLES_SAVE"
     clear
@@ -36,19 +29,12 @@ block_sites() {
 }
 
 unblock_sites() {
-    if [ ! -f "$LIST_FILE" ]; then
-        echo "The list file $LIST_FILE does not exist."
-        exit 1
-    fi
-
-    while IFS= read -r site; do
-        # Unblocking by domain name
+    curl -s "$LIST_URL" | while IFS= read -r site; do
         iptables -D OUTPUT -p tcp -m string --string "$site" --algo bm --to 65535 -j REJECT
-        # Resolving domain to IP and unblocking by IP address
         for ip in $(dig +short "$site"); do
             iptables -D OUTPUT -d "$ip" -j REJECT
         done
-    done < "$LIST_FILE"
+    done
 
     iptables-save > "$IPTABLES_SAVE"
     clear
@@ -70,3 +56,4 @@ while true; do
         *) echo "Invalid option. Please try again." ;;
     esac
 done
+
