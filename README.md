@@ -36,7 +36,8 @@ Using network optimization can lead to multiple advantages:
 10. Change server port automatically
 11. Blocking Iranian ISPs separately
 12. Install and configure fail2ban automatically to increase ssh security
-13. Other features coming soon...
+13. Block and unBlock All SpeedTest website
+14. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
