@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.8.3  ${NC}"
+    echo -e "                         ${RED}NetOptix V1.9.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -32,7 +32,8 @@ while true; do
     echo "12- Block and unBlock Private network"
     echo "13- Block and unBlock Iranian ISP"
     echo "14- Install fail2ban for ssh security"
-    echo "15- Exit menu"
+    echo "15- Block and unBlock All SpeedTest website"
+    echo "16- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -135,6 +136,13 @@ while true; do
             rm /tmp/fail2ban.sh
             ;;
         15)
+            echo "Running Speedtest blocker an unblocker..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.sh -o /tmp/speedtest.sh
+            bash /tmp/speedtest.sh
+            rm /tmp/speedtest.sh
+            ;;
+        16)
             echo "Exiting..."
             sleep 3
             exit 0
