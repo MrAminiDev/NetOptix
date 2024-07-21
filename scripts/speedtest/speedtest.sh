@@ -43,6 +43,7 @@ unblock_sites() {
 }
 
 while true; do
+    clear
     echo "Select an option:"
     echo "1. Block SpeedTest Site"
     echo "2. Unblock SpeedTest Site"
