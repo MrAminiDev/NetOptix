@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V1.9.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V2.0.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -24,16 +24,15 @@ while true; do
     echo "4- Create Swap"
     echo "5- MTU Finder + auto set"
     echo "6- MTU Finder"
-    echo "7- Disable Server Ping"
-    echo "8- Enable Server Ping"
-    echo "9- Block torrent list"
-    echo "10- Change Server DNS"
-    echo "11- change SSH port"
-    echo "12- Block and unBlock Private network"
-    echo "13- Block and unBlock Iranian ISP"
-    echo "14- Install fail2ban for ssh security"
-    echo "15- Block and unBlock All SpeedTest website"
-    echo "16- Exit menu"
+    echo "7- Block and unBlock Server Ping"
+    echo "8- Block torrent list"
+    echo "9- Change Server DNS"
+    echo "10- change SSH port"
+    echo "11- Block and unBlock Private network"
+    echo "12- Block and unBlock Iranian ISP"
+    echo "13- Install fail2ban for ssh security"
+    echo "14- Block and unBlock All SpeedTest website"
+    echo "15- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -82,67 +81,60 @@ while true; do
         7)
             echo "Running Server Ping Blocker..."
             sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/DPing.sh -o /tmp/DPing.sh
-            bash /tmp/DPing.sh
-            rm /tmp/DPing.sh
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/Ping.sh -o /tmp/Ping.sh
+            bash /tmp/Ping.sh
+            rm /tmp/Ping.sh
             ;;
         8)
-            echo "Running Server Ping UnBlocker..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/EPing.sh -o /tmp/EPing.sh
-            bash /tmp/EPing.sh
-            rm /tmp/EPing.sh
-            ;;
-        9)
             echo "Running Block torrent list..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/blocktorrent/blocktorrent.sh -o /tmp/blocktorrent.sh
             bash /tmp/blocktorrent.sh
             rm /tmp/blocktorrent.sh
             ;;
-        10)
+        9)
             echo "Running Server DNS changer..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
             bash /tmp/dns.sh
             rm /tmp/dns.sh
             ;;
-        11)
+        10)
             echo "Running SSH port changer..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/cport.sh -o /tmp/cport.sh
             bash /tmp/cport.sh
             rm /tmp/cport.sh
             ;;
-        12)
+        11)
             echo "Running Private network blocker an unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/pib.sh -o /tmp/pib.sh
             bash /tmp/pib.sh
             rm /tmp/pib.sh
             ;;
-        13)
+        12)
             echo "Running Iran ISP blocker an unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/block-isp.sh -o /tmp/block-isp.sh
             bash /tmp/block-isp.sh
             rm /tmp/block-isp.sh
             ;;
-        14)
+        13)
             echo "Running installer fail2ban script for ssh security..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/fail2ban.sh -o /tmp/fail2ban.sh
             bash /tmp/fail2ban.sh
             rm /tmp/fail2ban.sh
             ;;
-        15)
+        14)
             echo "Running Speedtest blocker an unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.sh -o /tmp/speedtest.sh
             bash /tmp/speedtest.sh
             rm /tmp/speedtest.sh
             ;;
-        16)
+        15)
             echo "Exiting..."
             sleep 3
             exit 0
