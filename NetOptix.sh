@@ -143,6 +143,7 @@ while true; do
             sleep 2
             echo "Done, WhatsApp Data and Time fixed..."
             sleep 3
+            ;;
         16)
             echo "Running IPv6 Disabling command..."
             sleep 2
@@ -151,6 +152,7 @@ while true; do
             sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
             echo "Done, IPv6 Disabled..."
             sleep 3
+            ;;
         17)
             echo "Exiting..."
             sleep 3
