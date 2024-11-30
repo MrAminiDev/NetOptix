@@ -33,7 +33,8 @@ while true; do
     echo "13- Install fail2ban for ssh security"
     echo "14- Block and unBlock All SpeedTest website"
     echo "15- Fix WhatsApp Data and Time"
-    echo "16- Exit menu"
+    echo "16- Disable IPv6"
+    echo "17- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -143,6 +144,14 @@ while true; do
             echo "Done, WhatsApp Data and Time fixed..."
             sleep 3
         16)
+            echo "Running IPv6 Disabling command..."
+            sleep 2
+            sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+            sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+            sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+            echo "Done, IPv6 Disabled..."
+            sleep 3
+        17)
             echo "Exiting..."
             sleep 3
             exit 0
