@@ -16,7 +16,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V2.0.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V2.1.0  ${NC}"
     echo -e "${BLUE}+======================================================================+${NC}"
     echo "1- install Hybla"
     echo "2- install BBR"
@@ -32,7 +32,8 @@ while true; do
     echo "12- Block and unBlock Iranian ISP"
     echo "13- Install fail2ban for ssh security"
     echo "14- Block and unBlock All SpeedTest website"
-    echo "15- Exit menu"
+    echo "15- Fix WhatsApp Data and Time"
+    echo "16- Exit menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -135,6 +136,13 @@ while true; do
             rm /tmp/speedtest.sh
             ;;
         15)
+            echo "Running WhatsApp Data and Time fixer..."
+            sleep 2
+            sudo timedatectl set-timezone Asia/Tehran
+            sleep 2
+            echo "Done, WhatsApp Data and Time fixed..."
+            sleep 3
+        16)
             echo "Exiting..."
             sleep 3
             exit 0
