@@ -2,23 +2,42 @@
 #
 # Auto Block and unBlock Iran ISP list
 #
-# System Required: Debian8+, Ubuntu16+
+# System Required: Debian8+, Ubuntu16+, Ubuntu24+
 #
 # Copyright (C) 2024 Mr.Amini Nezhad
 #
 # my Github: https://github.com/MrAminiDev/
 
-
 install_prerequisites() {
+    # Install iptables if not installed
     if ! command -v iptables &> /dev/null; then
         echo "iptables not found. Installing..."
         apt-get update
         apt-get install -y iptables
     fi
+
+    # Install curl if not installed
     if ! command -v curl &> /dev/null; then
         echo "curl not found. Installing..."
-        apt-get update
         apt-get install -y curl
+    fi
+
+    # Install iptables-persistent for saving iptables rules
+    if ! dpkg -l | grep -q iptables-persistent; then
+        echo "iptables-persistent not found. Installing..."
+        DEBIAN_FRONTEND=noninteractive apt-get install -y iptables-persistent
+    fi
+
+    # Install netfilter-persistent if not installed (required for iptables-persistent)
+    if ! dpkg -l | grep -q netfilter-persistent; then
+        echo "netfilter-persistent not found. Installing..."
+        DEBIAN_FRONTEND=noninteractive apt-get install -y netfilter-persistent
+    fi
+
+    # Install essential packages for Ubuntu 24
+    if ! dpkg -l | grep -q wget; then
+        echo "wget not found. Installing..."
+        apt-get install -y wget
     fi
 }
 
@@ -69,10 +88,10 @@ show_isp_menu() {
         echo "2) Hamrah-Aval (MCI)"
         echo "3) Rightel"
         echo "4) Shatel"
-        echo "5) ICT ( Mokhaberat )
-        echo "6) AfraNet
-        echo "7) ParsOnline
-        echo "8) AsiaTech
+        echo "5) ICT (Mokhaberat)"
+        echo "6) AfraNet"
+        echo "7) ParsOnline"
+        echo "8) AsiaTech"
         echo "9) Back to main menu"
         read -p "Enter your choice: " isp_choice
 
@@ -99,7 +118,7 @@ show_isp_menu() {
                 ;;
             5)
                 isp_url="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/isp/ict.ipv4"
-                isp_name="ICT ( Mokhaberat )"
+                isp_name="ICT (Mokhaberat)"
                 break
                 ;;
             6)
@@ -165,12 +184,8 @@ main_menu() {
     done
 }
 
+# Install all necessary prerequisites
 install_prerequisites
 
-if ! dpkg -l | grep -q iptables-persistent; then
-    echo "iptables-persistent not found. Installing..."
-    apt-get update
-    DEBIAN_FRONTEND=noninteractive apt-get install -y iptables-persistent
-fi
-
+# Run the main menu
 main_menu
