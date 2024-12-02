@@ -8,8 +8,28 @@
 #
 # my Github: https://github.com/MrAminiDev/
 
-command -v iptables >/dev/null 2>&1 || { echo >&2 "iptables is required but it's not installed. Aborting."; exit 1; }
-command -v curl >/dev/null 2>&1 || { echo >&2 "curl is required but it's not installed. Aborting."; exit 1; }
+echo "Checking required packages..."
+
+if ! command -v iptables >/dev/null 2>&1; then
+    echo "iptables is not installed. Installing..."
+    sudo apt update && sudo apt install -y iptables
+else
+    echo "iptables is already installed."
+fi
+
+if ! command -v curl >/dev/null 2>&1; then
+    echo "curl is not installed. Installing..."
+    sudo apt update && sudo apt install -y curl
+else
+    echo "curl is already installed."
+fi
+
+if ! command -v dig >/dev/null 2>&1; then
+    echo "dig is not installed. Installing..."
+    sudo apt update && sudo apt install -y dnsutils
+else
+    echo "dig is already installed."
+fi
 
 LIST_URL="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.list"
 IPTABLES_SAVE="/etc/iptables/rules.v4"
