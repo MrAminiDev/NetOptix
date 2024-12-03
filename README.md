@@ -1,7 +1,6 @@
 <div align="center"><img src="https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/demo/NetOptix.JPG" width="500"></div>
 <div align="center"><br>
-Warning, this script may not be compatible with Ubuntu 24.04, make sure to make a backup copy before using the commands.
-  <br><br>
+
   برای توضیحات <a href="https://github.com/MrAminiDev/NetOptix/blob/main/README-fa.md"> فارسی اینجا بزنید </a>
 
 </div>
