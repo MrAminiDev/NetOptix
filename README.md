@@ -38,7 +38,8 @@ Using network optimization can lead to multiple advantages:
 13. Block and unBlock All SpeedTest website
 14. Fix WhatsApp Data and Time
 15. Disable Ipv6
-16. Other features coming soon...
+16. install ubuntu on mikrotik
+17. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
