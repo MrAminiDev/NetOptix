@@ -1,40 +1,61 @@
 #!/bin/bash
 
-RED='\033[38;2;231;76;60m'
-BLUE='\033[38;5;33m'
-NC='\033[0m'
+# Color Definitions
+RED='\033[38;2;231;76;60m'      # Red
+BLUE='\033[38;5;32m'            # Blue
+GREEN='\033[38;5;82m'           # Green
+YELLOW='\033[38;5;226m'         # Yellow
+CYAN='\033[38;5;51m'            # Cyan
+MAGENTA='\033[38;5;171m'        # Magenta
+NC='\033[0m'                    # No Color
 
 while true; do
     clear
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "${BLUE}║       ${RED}▌║█║▌║▌│║▌║▌█║ NetOptix Coded By MrAmini ▌│║▌║▌║║▌█║${NC}   ${BLUE}        ║${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "${BLUE}║    ${RED}        ▌║█║▌│║│║▌║▌█║ Main Menu  ▌│║▌║│║║▌█║▌       ${NC}   ${BLUE}          ║${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}║       ${RED}▌║█║▌║▌│║▌║▌█║ NetOptix Coded By MrAmini ▌│║▌║▌║║▌█║${NC}   ${CYAN}        ║${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}║    ${RED}▌║█║▌│║│║▌║▌█║        Main Menu        ▌│║▌║│║║▌█║▌${NC}   ${CYAN}       ║${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V3.0.0  ${NC}"
-    echo -e "${BLUE}+======================================================================+${NC}"
-    echo "1- install Hybla"
-    echo "2- install BBR"
-    echo "3- Delete Optimize ( BBR and Hybla )"
-    echo "4- Create Swap"
-    echo "5- MTU Finder + auto set"
-    echo "6- MTU Finder"
-    echo "7- Block and unBlock Server Ping"
-    echo "8- Block torrent list"
-    echo "9- Change Server DNS"
-    echo "10- change SSH port"
-    echo "11- Block and unBlock Private network"
-    echo "12- Block and unBlock Iranian ISP"
-    echo "13- Install fail2ban for ssh security"
-    echo "14- Block and unBlock All SpeedTest website"
-    echo "15- Fix WhatsApp Data and Time"
-    echo "16- Disable IPv6"
-    echo "17- Exit menu"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "                         ${RED}NetOptix V3.1.0  ${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+
+    # Network Optimization (Green)
+    echo -e "\n${GREEN}== Network Optimization ==${NC}"
+    echo -e "${GREEN}1${NC}) ${YELLOW}Install Hybla${NC}"
+    echo -e "${GREEN}2${NC}) ${YELLOW}Install BBR${NC}"
+    echo -e "${GREEN}3${NC}) ${YELLOW}Delete Optimize (BBR and Hybla)${NC}"
+    echo -e "${GREEN}4${NC}) ${YELLOW}Create Swap${NC}"
+    echo -e "${GREEN}5${NC}) ${YELLOW}MTU Finder + Auto Set${NC}"
+    echo -e "${GREEN}6${NC}) ${YELLOW}MTU Finder${NC}"
+
+    # Server & Network Management (Blue)
+    echo -e "\n${BLUE}== Server & Network Management ==${NC}"
+    echo -e "${BLUE}7${NC}) ${CYAN}Block and Unblock Server Ping${NC}"
+    echo -e "${BLUE}8${NC}) ${CYAN}Block Torrent List${NC}"
+    echo -e "${BLUE}9${NC}) ${CYAN}Change Server DNS${NC}"
+    echo -e "${BLUE}10${NC}) ${CYAN}Change SSH Port${NC}"
+    echo -e "${BLUE}11${NC}) ${CYAN}Block and Unblock Private Network${NC}"
+    echo -e "${BLUE}12${NC}) ${CYAN}Block and Unblock Iranian ISP${NC}"
+
+    # Security (Red)
+    echo -e "\n${RED}== Security ==${NC}"
+    echo -e "${RED}13${NC}) ${CYAN}Install Fail2ban for SSH Security${NC}"
+    echo -e "${RED}14${NC}) ${CYAN}Block and Unblock All SpeedTest Websites${NC}"
+
+    # System Maintenance (Magenta)
+    echo -e "\n${MAGENTA}== System Maintenance ==${NC}"
+    echo -e "${MAGENTA}15${NC}) ${CYAN}Fix WhatsApp Data and Time${NC}"
+    echo -e "${MAGENTA}16${NC}) ${CYAN}Disable IPv6${NC}"
+
+    # Exit Option (Yellow)
+    echo -e "\n${YELLOW}== Exit ==${NC}"
+    echo -e "${YELLOW}17${NC}) ${CYAN}Exit Menu${NC}"
+
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -109,14 +130,14 @@ while true; do
             rm /tmp/cport.sh
             ;;
         11)
-            echo "Running Private network blocker an unblocker..."
+            echo "Running Private network blocker and unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/pib.sh -o /tmp/pib.sh
             bash /tmp/pib.sh
             rm /tmp/pib.sh
             ;;
         12)
-            echo "Running Iran ISP blocker an unblocker..."
+            echo "Running Iran ISP blocker and unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/block-isp.sh -o /tmp/block-isp.sh
             bash /tmp/block-isp.sh
@@ -130,7 +151,7 @@ while true; do
             rm /tmp/fail2ban.sh
             ;;
         14)
-            echo "Running Speedtest blocker an unblocker..."
+            echo "Running Speedtest blocker and unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.sh -o /tmp/speedtest.sh
             bash /tmp/speedtest.sh
