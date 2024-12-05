@@ -21,7 +21,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V3.1.0  ${NC}"
+    echo -e "                         ${RED}NetOptix V3.2.0  ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
 
     # Network Optimization (Green)
@@ -41,20 +41,21 @@ while true; do
     echo -e "${BLUE}10${NC}) ${CYAN}Change SSH Port${NC}"
     echo -e "${BLUE}11${NC}) ${CYAN}Block and Unblock Private Network${NC}"
     echo -e "${BLUE}12${NC}) ${CYAN}Block and Unblock Iranian ISP${NC}"
+    echo -e "${BLUE}13${NC}) ${CYAN}Install mikrotik on ubuntu${NC}"
 
     # Security (Red)
     echo -e "\n${RED}== Security ==${NC}"
-    echo -e "${RED}13${NC}) ${CYAN}Install Fail2ban for SSH Security${NC}"
-    echo -e "${RED}14${NC}) ${CYAN}Block and Unblock All SpeedTest Websites${NC}"
+    echo -e "${RED}14${NC}) ${CYAN}Install Fail2ban for SSH Security${NC}"
+    echo -e "${RED}15${NC}) ${CYAN}Block and Unblock All SpeedTest Websites${NC}"
 
     # System Maintenance (Magenta)
     echo -e "\n${MAGENTA}== System Maintenance ==${NC}"
-    echo -e "${MAGENTA}15${NC}) ${CYAN}Fix WhatsApp Data and Time${NC}"
-    echo -e "${MAGENTA}16${NC}) ${CYAN}Disable IPv6${NC}"
+    echo -e "${MAGENTA}16${NC}) ${CYAN}Fix WhatsApp Data and Time${NC}"
+    echo -e "${MAGENTA}17${NC}) ${CYAN}Disable IPv6${NC}"
 
     # Exit Option (Yellow)
     echo -e "\n${YELLOW}== Exit ==${NC}"
-    echo -e "${YELLOW}17${NC}) ${CYAN}Exit Menu${NC}"
+    echo -e "${YELLOW}18${NC}) ${CYAN}Exit Menu${NC}"
 
     read -p "Enter your choice: " choice
 
@@ -144,20 +145,27 @@ while true; do
             rm /tmp/block-isp.sh
             ;;
         13)
+            echo "Running mikrotik installer on ubuntu..."
+            sleep 2
+            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mikrotik.sh -o /tmp/mikrotik.sh
+            bash /tmp/mikrotik.sh
+            rm /tmp/mikrotik.sh
+            ;;
+        14)
             echo "Running installer fail2ban script for ssh security..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/fail2ban.sh -o /tmp/fail2ban.sh
             bash /tmp/fail2ban.sh
             rm /tmp/fail2ban.sh
             ;;
-        14)
+        15)
             echo "Running Speedtest blocker and unblocker..."
             sleep 2
             curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.sh -o /tmp/speedtest.sh
             bash /tmp/speedtest.sh
             rm /tmp/speedtest.sh
             ;;
-        15)
+        16)
             echo "Running WhatsApp Data and Time fixer..."
             sleep 2
             sudo timedatectl set-timezone Asia/Tehran
@@ -165,7 +173,7 @@ while true; do
             echo "Done, WhatsApp Data and Time fixed..."
             sleep 3
             ;;
-        16)
+        17)
             echo "Running IPv6 Disabling command..."
             sleep 2
             sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
@@ -174,7 +182,7 @@ while true; do
             echo "Done, IPv6 Disabled..."
             sleep 3
             ;;
-        17)
+        18)
             echo "Exiting..."
             sleep 3
             exit 0
