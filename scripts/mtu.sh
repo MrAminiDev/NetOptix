@@ -7,6 +7,8 @@
 #
 # my Github: https://github.com/MrAminiDev/
 
+#!/bin/bash
+
 check_requirements() {
     local requirements=("ping" "ping6" "ip")
 
@@ -37,7 +39,7 @@ show_menu() {
         exit 1
     fi
 
-    read -p "Is the default network interface eth0?(Hetzner datacenter, the default is eth0) [Y/N]: " default_iface
+    read -p "Is the default network interface eth0? (In Hezner datacenter, the default is eth0) [Y/N]: " default_iface
 
     if [[ $default_iface == "Y" || $default_iface == "y" ]]; then
         interface="eth0"
@@ -62,12 +64,32 @@ show_menu() {
     done
 }
 
+save_mtu_setting() {
+    local interface=$1
+    local mtu=$2
+
+    if [[ -f "/etc/netplan/01-netcfg.yaml" || -f "/etc/netplan/50-cloud-init.yaml" ]]; then
+        # تنظیم برای Netplan
+        local netplan_file=$(ls /etc/netplan/*.yaml | head -n 1)
+        echo "Updating $netplan_file for permanent MTU setting..."
+        sudo sed -i "/^ *ethernets:/,/^ *vlans:/ s/^ *$interface:/&\n      mtu: $mtu/" $netplan_file
+        sudo netplan apply
+    elif [[ -f "/etc/network/interfaces" ]]; then
+        echo "Updating /etc/network/interfaces for permanent MTU setting..."
+        sudo sed -i "/iface $interface inet/ a \    mtu $mtu" /etc/network/interfaces
+        sudo ifdown $interface && sudo ifup $interface
+    else
+        echo "Could not detect Netplan or ifupdown. Please update manually."
+        exit 1
+    fi
+}
+
 find_max_mtu() {
     local ip=$1
     local proto=$2
     local interface=$3
     local step_size=$4
-    local min_mtu=700
+    local min_mtu=1000
     local max_mtu=1500
     local last_successful_mtu=$max_mtu
 
@@ -122,6 +144,7 @@ find_max_mtu() {
 
     if [[ $? -eq 0 ]]; then
         echo "MTU successfully set to $final_mtu on $interface."
+        save_mtu_setting $interface $final_mtu
     else
         echo "Failed to set MTU on $interface."
     fi
