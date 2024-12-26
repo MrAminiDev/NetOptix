@@ -21,7 +21,7 @@ while true; do
     echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V3.2.1  ${NC}"
+    echo -e "                         ${RED}NetOptix V3.3.0  ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
 
     # Network Optimization (Green)
