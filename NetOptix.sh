@@ -42,7 +42,7 @@ while true; do
     echo -e "${BLUE}11${NC}) ${CYAN}Block and Unblock Private Network${NC}"
     echo -e "${BLUE}12${NC}) ${CYAN}Block and Unblock Iranian ISP${NC}"
     echo -e "${BLUE}13${NC}) ${CYAN}Install mikrotik on ubuntu${NC}"
-    echo -e "${BLUE}14${NC}) ${CYAN}Install mikrotik on ubuntu${NC}"
+    echo -e "${BLUE}14${NC}) ${CYAN}Install Monitoring system (Cockpit)${NC}"
     
     # Security (Red)
     echo -e "\n${RED}== Security ==${NC}"
