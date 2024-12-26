@@ -39,7 +39,8 @@ Using network optimization can lead to multiple advantages:
 14. Fix WhatsApp Data and Time
 15. Disable Ipv6
 16. install ubuntu on mikrotik
-17. Other features coming soon...
+17. Adding a real-time server monitoring system
+18. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
