@@ -40,7 +40,8 @@ Using network optimization can lead to multiple advantages:
 15. Disable Ipv6
 16. install ubuntu on mikrotik
 17. Adding a real-time server monitoring system
-18. Other features coming soon...
+18. Create and Delete ZRAM
+19. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
