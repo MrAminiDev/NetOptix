@@ -9,206 +9,124 @@ CYAN='\033[38;5;51m'            # Cyan
 MAGENTA='\033[38;5;171m'        # Magenta
 NC='\033[0m'                    # No Color
 
+# Functions for Submenus
+network_optimization_menu() {
+    while true; do
+        clear
+        echo -e "${GREEN}== Network Optimization ==${NC}"
+        echo -e "1) Install Hybla"
+        echo -e "2) Install BBR"
+        echo -e "3) Delete Optimize (BBR and Hybla)"
+        echo -e "4) Create Swap"
+        echo -e "5) Create ZRAM"
+        echo -e "6) MTU Finder + Auto Set"
+        echo -e "7) MTU Finder"
+        echo -e "0) Back to Main Menu"
+        read -p "Enter your choice: " choice
+        case $choice in
+            1) echo "Running Hybla script..." ;;
+            2) echo "Running BBR script..." ;;
+            3) echo "Running Uninstall script..." ;;
+            4) echo "Running Swap script..." ;;
+            5) echo "Running ZRAM script..." ;;
+            6) echo "Running MTU Finder + Auto Set script..." ;;
+            7) echo "Running MTU Finder script..." ;;
+            0) return ;;
+            *) echo "Invalid choice." ; sleep 2 ;;
+        esac
+    done
+}
+
+server_management_menu() {
+    while true; do
+        clear
+        echo -e "${BLUE}== Server & Network Management ==${NC}"
+        echo -e "1) Block and Unblock Server Ping"
+        echo -e "2) Block Torrent List"
+        echo -e "3) Change Server DNS"
+        echo -e "4) Change SSH Port"
+        echo -e "5) Block and Unblock Private Network"
+        echo -e "6) Block and Unblock Iranian ISP"
+        echo -e "7) Install mikrotik on Ubuntu"
+        echo -e "8) Install Monitoring System (Cockpit)"
+        echo -e "0) Back to Main Menu"
+        read -p "Enter your choice: " choice
+        case $choice in
+            1) echo "Running Server Ping Blocker..." ;;
+            2) echo "Running Block Torrent List..." ;;
+            3) echo "Running Server DNS Changer..." ;;
+            4) echo "Running SSH Port Changer..." ;;
+            5) echo "Running Private Network Blocker..." ;;
+            6) echo "Running Iranian ISP Blocker..." ;;
+            7) echo "Running Mikrotik Installer..." ;;
+            8) echo "Installing Monitoring System..." ;;
+            0) return ;;
+            *) echo "Invalid choice." ; sleep 2 ;;
+        esac
+    done
+}
+
+security_menu() {
+    while true; do
+        clear
+        echo -e "${RED}== Security ==${NC}"
+        echo -e "1) Install Fail2ban for SSH Security"
+        echo -e "2) Block and Unblock All SpeedTest Websites"
+        echo -e "0) Back to Main Menu"
+        read -p "Enter your choice: " choice
+        case $choice in
+            1) echo "Installing Fail2ban..." ;;
+            2) echo "Running SpeedTest Blocker..." ;;
+            0) return ;;
+            *) echo "Invalid choice." ; sleep 2 ;;
+        esac
+    done
+}
+
+system_maintenance_menu() {
+    while true; do
+        clear
+        echo -e "${MAGENTA}== System Maintenance ==${NC}"
+        echo -e "1) Fix WhatsApp Data and Time"
+        echo -e "2) Disable IPv6"
+        echo -e "0) Back to Main Menu"
+        read -p "Enter your choice: " choice
+        case $choice in
+            1) echo "Fixing WhatsApp Data and Time..." ;;
+            2) echo "Disabling IPv6..." ;;
+            0) return ;;
+            *) echo "Invalid choice." ; sleep 2 ;;
+        esac
+    done
+}
+
+# Main Menu
 while true; do
     clear
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "${CYAN}║       ${RED}▌║█║▌║▌│║▌║▌█║ NetOptix Coded By MrAmini ▌│║▌║▌║║▌█║${NC}   ${CYAN}        ║${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "${CYAN}║    ${RED}▌║█║▌│║│║▌║▌█║        Main Menu        ▌│║▌║│║║▌█║▌${NC}   ${CYAN}       ║${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "     ${RED}Open issues at https://github.com/MrAminiDev/NetOptix ${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "                         ${RED}NetOptix V3.4.0  ${NC}"
-    echo -e "${CYAN}+======================================================================+${NC}"
-
-    # Network Optimization (Green)
-    echo -e "\n${GREEN}== Network Optimization ==${NC}"
-    echo -e "${GREEN}1${NC}) ${YELLOW}Install Hybla${NC}"
-    echo -e "${GREEN}2${NC}) ${YELLOW}Install BBR${NC}"
-    echo -e "${GREEN}3${NC}) ${YELLOW}Delete Optimize (BBR and Hybla)${NC}"
-    echo -e "${GREEN}4${NC}) ${YELLOW}Create Swap${NC}"
-    echo -e "${GREEN}5${NC}) ${YELLOW}Create ZRAM${NC}"
-    echo -e "${GREEN}6${NC}) ${YELLOW}MTU Finder + Auto Set${NC}"
-    echo -e "${GREEN}7${NC}) ${YELLOW}MTU Finder${NC}"
-
-    # Server & Network Management (Blue)
-    echo -e "\n${BLUE}== Server & Network Management ==${NC}"
-    echo -e "${BLUE}8${NC}) ${CYAN}Block and Unblock Server Ping${NC}"
-    echo -e "${BLUE}9${NC}) ${CYAN}Block Torrent List${NC}"
-    echo -e "${BLUE}10${NC}) ${CYAN}Change Server DNS${NC}"
-    echo -e "${BLUE}11${NC}) ${CYAN}Change SSH Port${NC}"
-    echo -e "${BLUE}12${NC}) ${CYAN}Block and Unblock Private Network${NC}"
-    echo -e "${BLUE}13${NC}) ${CYAN}Block and Unblock Iranian ISP${NC}"
-    echo -e "${BLUE}14${NC}) ${CYAN}Install mikrotik on ubuntu${NC}"
-    echo -e "${BLUE}15${NC}) ${CYAN}Install Monitoring system (Cockpit)${NC}"
-    
-    # Security (Red)
-    echo -e "\n${RED}== Security ==${NC}"
-    echo -e "${RED}16${NC}) ${CYAN}Install Fail2ban for SSH Security${NC}"
-    echo -e "${RED}17${NC}) ${CYAN}Block and Unblock All SpeedTest Websites${NC}"
-
-    # System Maintenance (Magenta)
-    echo -e "\n${MAGENTA}== System Maintenance ==${NC}"
-    echo -e "${MAGENTA}18${NC}) ${CYAN}Fix WhatsApp Data and Time${NC}"
-    echo -e "${MAGENTA}19${NC}) ${CYAN}Disable IPv6${NC}"
-
-    # Exit Option (Yellow)
-    echo -e "\n${YELLOW}== Exit ==${NC}"
-    echo -e "${YELLOW}20${NC}) ${CYAN}Exit Menu${NC}"
-
-    read -p "Enter your choice: " choice
-
-    case $choice in
-        1)
-            echo "Running Hybla script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh -o /tmp/hybla.sh
-            bash /tmp/hybla.sh
-            rm /tmp/hybla.sh
-            ;;
-        2)
-            echo "Running BBR script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh -o /tmp/bbr.sh
-            bash /tmp/bbr.sh
-            rm /tmp/bbr.sh
-            ;;
-        3)
-            echo "Running Uninstall script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh -o /tmp/uninstall.sh
-            bash /tmp/uninstall.sh
-            rm /tmp/uninstall.sh
-            ;;
-        4)
-            echo "Running Swap script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/swap.sh -o /tmp/swap.sh
-            bash /tmp/swap.sh
-            rm /tmp/swap.sh
-            ;;
-        5)
-            echo "Running Swap script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/swap.sh -o /tmp/swap.sh
-            bash /tmp/swap.sh
-            rm /tmp/swap.sh
-            ;;
-        6)
-            echo "Running MTU finder + auto set script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtu.sh -o /tmp/mtu.sh
-            bash /tmp/mtu.sh
-            rm /tmp/mtu.sh
-            ;;
-        7)
-            echo "Running MTU finder script..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtunoset.sh -o /tmp/mtunoset.sh
-            bash /tmp/mtunoset.sh
-            rm /tmp/mtunoset.sh
-            ;;
-        8)
-            echo "Running Server Ping Blocker..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/Ping.sh -o /tmp/Ping.sh
-            bash /tmp/Ping.sh
-            rm /tmp/Ping.sh
-            ;;
-        9)
-            echo "Running Block torrent list..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/blocktorrent/blocktorrent.sh -o /tmp/blocktorrent.sh
-            bash /tmp/blocktorrent.sh
-            rm /tmp/blocktorrent.sh
-            ;;
-        10)
-            echo "Running Server DNS changer..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
-            bash /tmp/dns.sh
-            rm /tmp/dns.sh
-            ;;
-        11)
-            echo "Running SSH port changer..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/cport.sh -o /tmp/cport.sh
-            bash /tmp/cport.sh
-            rm /tmp/cport.sh
-            ;;
-        12)
-            echo "Running Private network blocker and unblocker..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/pib.sh -o /tmp/pib.sh
-            bash /tmp/pib.sh
-            rm /tmp/pib.sh
-            ;;
-        13)
-            echo "Running Iran ISP blocker and unblocker..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/block-isp.sh -o /tmp/block-isp.sh
-            bash /tmp/block-isp.sh
-            rm /tmp/block-isp.sh
-            ;;
-        14)
-            echo "Running mikrotik installer on ubuntu..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mikrotik.sh -o /tmp/mikrotik.sh
-            bash /tmp/mikrotik.sh
-            rm /tmp/mikrotik.sh
-            ;;
-        15)
-            echo "Install Monitoring system (Cockpit)"
-            sleep 2
-            sudo apt update
-            sudo apt install cockpit
-            sudo systemctl start cockpit
-            sleep 2
-            echo "Done, Monitoring system Onlined... use IP:9090 (user: root / password: server password)"
-            sleep 10
-            ;;
-        16)
-            echo "Running installer fail2ban script for ssh security..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/fail2ban.sh -o /tmp/fail2ban.sh
-            bash /tmp/fail2ban.sh
-            rm /tmp/fail2ban.sh
-            ;;
-        17)
-            echo "Running Speedtest blocker and unblocker..."
-            sleep 2
-            curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.sh -o /tmp/speedtest.sh
-            bash /tmp/speedtest.sh
-            rm /tmp/speedtest.sh
-            ;;
-        18)
-            echo "Running WhatsApp Data and Time fixer..."
-            sleep 2
-            sudo timedatectl set-timezone Asia/Tehran
-            sleep 2
-            echo "Done, WhatsApp Data and Time fixed..."
-            sleep 3
-            ;;
-        19)
-            echo "Running IPv6 Disabling command..."
-            sleep 2
-            sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-            sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-            sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
-            echo "Done, IPv6 Disabled..."
-            sleep 3
-            ;;
-        20)
-            echo "Exiting..."
-            sleep 3
-            exit 0
-            ;;
-        *)
-            echo "Invalid choice. Please enter a valid option."
-            read -p "Press Enter to continue..."
-            ;;
+	echo -e "${CYAN}+======================================================================+${NC}"
+	echo -e	"${RED}##    ## ######## ########  #######  ########  ######## #### ##     ## ${NC}"
+	echo -e	"${RED}###   ## ##          ##    ##     ## ##     ##    ##     ##   ##   ##  ${NC}"
+	echo -e	"${RED}####  ## ##          ##    ##     ## ##     ##    ##     ##    ## ##   ${NC}"
+	echo -e	"${RED}## ## ## ######      ##    ##     ## ########     ##     ##     ###    ${NC}"
+	echo -e	"${RED}##  #### ##          ##    ##     ## ##           ##     ##    ## ##   ${NC}"
+	echo -e	"${RED}##   ### ##          ##    ##     ## ##           ##     ##   ##   ##  ${NC}"
+	echo -e	"${RED}##    ## ########    ##     #######  ##           ##    #### ##     ## ${NC}"
+	echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.0.0${NC} "
+	echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}== Main Menu ==${NC}"
+    echo -e "1) Network Optimization"
+    echo -e "2) Server & Network Management"
+    echo -e "3) Security"
+    echo -e "4) System Maintenance"
+    echo -e "5) Exit"
+    read -p "Enter your choice: " main_choice
+    case $main_choice in
+        1) network_optimization_menu ;;
+        2) server_management_menu ;;
+        3) security_menu ;;
+        4) system_maintenance_menu ;;
+        5) echo "Exiting..." ; exit 0 ;;
+        *) echo "Invalid choice." ; sleep 2 ;;
     esac
 done
