@@ -24,13 +24,48 @@ network_optimization_menu() {
         echo -e "0) Back to Main Menu"
         read -p "Enter your choice: " choice
         case $choice in
-            1) echo "Running Hybla script..." ;;
-            2) echo "Running BBR script..." ;;
-            3) echo "Running Uninstall script..." ;;
-            4) echo "Running Swap script..." ;;
-            5) echo "Running ZRAM script..." ;;
-            6) echo "Running MTU Finder + Auto Set script..." ;;
-            7) echo "Running MTU Finder script..." ;;
+            1)
+                echo "Running Hybla script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/hybla.sh -o /tmp/hybla.sh
+                bash /tmp/hybla.sh
+                rm /tmp/hybla.sh
+                ;;
+            2)
+                echo "Running BBR script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/bbr.sh -o /tmp/bbr.sh
+                bash /tmp/bbr.sh
+                rm /tmp/bbr.sh
+                ;;
+            3)
+                echo "Running Uninstall script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/uninstall.sh -o /tmp/uninstall.sh
+                bash /tmp/uninstall.sh
+                rm /tmp/uninstall.sh
+                ;;
+            4)
+                echo "Running Swap script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/swap.sh -o /tmp/swap.sh
+                bash /tmp/swap.sh
+                rm /tmp/swap.sh
+                ;;
+            5)
+                echo "Running ZRAM script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/zram.sh -o /tmp/zram.sh
+                bash /tmp/zram.sh
+                rm /tmp/zram.sh
+                ;;
+            6)
+                echo "Running MTU Finder + Auto Set script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtu.sh -o /tmp/mtu.sh
+                bash /tmp/mtu.sh
+                rm /tmp/mtu.sh
+                ;;
+            7)
+                echo "Running MTU Finder script..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mtunoset.sh -o /tmp/mtunoset.sh
+                bash /tmp/mtunoset.sh
+                rm /tmp/mtunoset.sh
+                ;;
             0) return ;;
             *) echo "Invalid choice." ; sleep 2 ;;
         esac
@@ -52,14 +87,56 @@ server_management_menu() {
         echo -e "0) Back to Main Menu"
         read -p "Enter your choice: " choice
         case $choice in
-            1) echo "Running Server Ping Blocker..." ;;
-            2) echo "Running Block Torrent List..." ;;
-            3) echo "Running Server DNS Changer..." ;;
-            4) echo "Running SSH Port Changer..." ;;
-            5) echo "Running Private Network Blocker..." ;;
-            6) echo "Running Iranian ISP Blocker..." ;;
-            7) echo "Running Mikrotik Installer..." ;;
-            8) echo "Installing Monitoring System..." ;;
+            1)
+                echo "Running Server Ping Blocker..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/Ping.sh -o /tmp/Ping.sh
+                bash /tmp/Ping.sh
+                rm /tmp/Ping.sh
+                ;;
+            2)
+                echo "Running Block Torrent List..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/blocktorrent/blocktorrent.sh -o /tmp/blocktorrent.sh
+                bash /tmp/blocktorrent.sh
+                rm /tmp/blocktorrent.sh
+                ;;
+            3)
+                echo "Running Server DNS Changer..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/dns.sh -o /tmp/dns.sh
+                bash /tmp/dns.sh
+                rm /tmp/dns.sh
+                ;;
+            4)
+                echo "Running SSH Port Changer..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/cport.sh -o /tmp/cport.sh
+                bash /tmp/cport.sh
+                rm /tmp/cport.sh
+                ;;
+            5)
+                echo "Running Private Network Blocker..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/pib.sh -o /tmp/pib.sh
+                bash /tmp/pib.sh
+                rm /tmp/pib.sh
+                ;;
+            6)
+                echo "Running Iranian ISP Blocker..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/isp-blocker/block-isp.sh -o /tmp/block-isp.sh
+                bash /tmp/block-isp.sh
+                rm /tmp/block-isp.sh
+                ;;
+            7)
+                echo "Running Mikrotik Installer..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/mikrotik.sh -o /tmp/mikrotik.sh
+                bash /tmp/mikrotik.sh
+                rm /tmp/mikrotik.sh
+                ;;
+            8)
+                echo "Installing Monitoring System..."
+                sudo apt update
+                sudo apt install cockpit
+                sudo systemctl start cockpit
+                echo "Done. Access the monitoring system via IP:9090. (User: root / Password: server password)"
+                sleep 10
+                ;;
             0) return ;;
             *) echo "Invalid choice." ; sleep 2 ;;
         esac
@@ -75,8 +152,18 @@ security_menu() {
         echo -e "0) Back to Main Menu"
         read -p "Enter your choice: " choice
         case $choice in
-            1) echo "Installing Fail2ban..." ;;
-            2) echo "Running SpeedTest Blocker..." ;;
+            1)
+                echo "Installing Fail2ban..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/fail2ban.sh -o /tmp/fail2ban.sh
+                bash /tmp/fail2ban.sh
+                rm /tmp/fail2ban.sh
+                ;;
+            2)
+                echo "Running SpeedTest Blocker..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/speedtest/speedtest.sh -o /tmp/speedtest.sh
+                bash /tmp/speedtest.sh
+                rm /tmp/speedtest.sh
+                ;;
             0) return ;;
             *) echo "Invalid choice." ; sleep 2 ;;
         esac
@@ -92,8 +179,20 @@ system_maintenance_menu() {
         echo -e "0) Back to Main Menu"
         read -p "Enter your choice: " choice
         case $choice in
-            1) echo "Fixing WhatsApp Data and Time..." ;;
-            2) echo "Disabling IPv6..." ;;
+            1)
+                echo "Fixing WhatsApp Data and Time..."
+                sudo timedatectl set-timezone Asia/Tehran
+                echo "Done. WhatsApp data and time fixed."
+                sleep 3
+                ;;
+            2)
+                echo "Disabling IPv6..."
+                sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+                sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+                sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+                echo "Done. IPv6 Disabled."
+                sleep 3
+                ;;
             0) return ;;
             *) echo "Invalid choice." ; sleep 2 ;;
         esac
