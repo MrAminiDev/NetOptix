@@ -31,6 +31,22 @@ define_zram() {
         sudo swapon /dev/zram0
         echo "$zram_size" | sudo tee /etc/zram_config > /dev/null
         echo "ZRAM created and activated. Configuration saved."
+
+        if ! grep -q "/etc/rc.local" /etc/rc.local; then
+            echo "#!/bin/bash" | sudo tee /etc/rc.local > /dev/null
+            sudo chmod +x /etc/rc.local
+        fi
+        sudo sed -i '/exit 0/d' /etc/rc.local
+        sudo bash -c 'cat <<EOL >> /etc/rc.local
+if [[ -f /etc/zram_config ]]; then
+    zram_size=\$(cat /etc/zram_config)
+    modprobe zram
+    echo \$((zram_size * 1024 * 1024)) > /sys/block/zram0/disksize
+    mkswap /dev/zram0
+    swapon /dev/zram0
+fi
+exit 0
+EOL'
     else
         echo "Invalid size entered. Please enter a numeric value in MB."
     fi
@@ -53,6 +69,7 @@ delete_zram() {
     sudo swapoff /dev/zram0
     sudo modprobe -r zram
     sudo rm -f /etc/zram_config
+    sudo sed -i '/zram_config/,+5d' /etc/rc.local
     echo "ZRAM removed and configuration deleted."
 }
 
@@ -60,6 +77,7 @@ install_prerequisites
 
 restore_zram
 
+# Menu for user interaction
 while true; do
     echo "Choose an option:"
     echo "1 - Create ZRAM"
