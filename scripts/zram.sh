@@ -26,13 +26,25 @@ define_zram() {
     if [[ $zram_size =~ ^[0-9]+$ ]]; then
         echo "Creating ZRAM of size ${zram_size}MB..."
         sudo modprobe zram
-        echo "zram" > /sys/block/zram0/disksize
         sudo bash -c "echo $(($zram_size * 1024 * 1024)) > /sys/block/zram0/disksize"
         sudo mkswap /dev/zram0
         sudo swapon /dev/zram0
-        echo "ZRAM created and activated."
+        echo "$zram_size" | sudo tee /etc/zram_config > /dev/null
+        echo "ZRAM created and activated. Configuration saved."
     else
         echo "Invalid size entered. Please enter a numeric value in MB."
+    fi
+}
+
+restore_zram() {
+    if [[ -f /etc/zram_config ]]; then
+        zram_size=$(cat /etc/zram_config)
+        echo "Restoring ZRAM of size ${zram_size}MB..."
+        sudo modprobe zram
+        sudo bash -c "echo $(($zram_size * 1024 * 1024)) > /sys/block/zram0/disksize"
+        sudo mkswap /dev/zram0
+        sudo swapon /dev/zram0
+        echo "ZRAM restored and activated."
     fi
 }
 
@@ -40,10 +52,13 @@ delete_zram() {
     echo "Removing ZRAM..."
     sudo swapoff /dev/zram0
     sudo modprobe -r zram
-    echo "ZRAM removed."
+    sudo rm -f /etc/zram_config
+    echo "ZRAM removed and configuration deleted."
 }
 
 install_prerequisites
+
+restore_zram
 
 while true; do
     echo "Choose an option:"
