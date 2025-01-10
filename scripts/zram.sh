@@ -14,9 +14,9 @@ install_prerequisites() {
         echo "Installing kmod package for modprobe..."
         sudo apt update && sudo apt install -y kmod
     fi
-    if ! ls /sys/block/ | grep -q zram0; then
-        echo "Installing zram-tools package..."
-        sudo apt update && sudo apt install -y zram-tools
+    if ! ls /lib/modules/$(uname -r)/kernel/drivers/block | grep -q zram; then
+        echo "Installing ZRAM kernel module..."
+        sudo apt update && sudo apt install -y linux-modules-extra-$(uname -r)
     fi
     echo "Prerequisites installed."
 }
@@ -24,16 +24,26 @@ install_prerequisites() {
 define_zram() {
     read -p "Enter the size of ZRAM in MB: " zram_size
     if [[ $zram_size =~ ^[0-9]+$ ]]; then
+        if ! sudo modprobe zram; then
+            echo "Error: ZRAM module could not be loaded. Please check your kernel version."
+            return
+        fi
+
+        if [[ ! -e /sys/block/zram0 ]]; then
+            echo "Error: ZRAM device not found."
+            return
+        fi
+
         echo "Creating ZRAM of size ${zram_size}MB..."
-        sudo modprobe zram
         sudo bash -c "echo $(($zram_size * 1024 * 1024)) > /sys/block/zram0/disksize"
         sudo mkswap /dev/zram0
         sudo swapon /dev/zram0
         echo "$zram_size" | sudo tee /etc/zram_config > /dev/null
         echo "ZRAM created and activated. Configuration saved."
 
-        if ! grep -q "/etc/rc.local" /etc/rc.local; then
-            echo "#!/bin/bash" | sudo tee /etc/rc.local > /dev/null
+        if [[ ! -f /etc/rc.local ]]; then
+            echo "Creating /etc/rc.local for persistence..."
+            sudo bash -c 'echo -e "#!/bin/bash\nexit 0" > /etc/rc.local'
             sudo chmod +x /etc/rc.local
         fi
         sudo sed -i '/exit 0/d' /etc/rc.local
@@ -54,9 +64,18 @@ EOL'
 
 restore_zram() {
     if [[ -f /etc/zram_config ]]; then
+        if ! sudo modprobe zram; then
+            echo "Error: ZRAM module could not be loaded."
+            return
+        fi
+
         zram_size=$(cat /etc/zram_config)
+        if [[ ! -e /sys/block/zram0 ]]; then
+            echo "Error: ZRAM device not found."
+            return
+        fi
+
         echo "Restoring ZRAM of size ${zram_size}MB..."
-        sudo modprobe zram
         sudo bash -c "echo $(($zram_size * 1024 * 1024)) > /sys/block/zram0/disksize"
         sudo mkswap /dev/zram0
         sudo swapon /dev/zram0
@@ -66,22 +85,38 @@ restore_zram() {
 
 delete_zram() {
     echo "Removing ZRAM..."
-    sudo swapoff /dev/zram0
-    sudo modprobe -r zram
+    if [[ -e /dev/zram0 ]]; then
+        sudo swapoff /dev/zram0
+        sudo modprobe -r zram
+    fi
     sudo rm -f /etc/zram_config
-    sudo sed -i '/zram_config/,+5d' /etc/rc.local
+    if [[ -f /etc/rc.local ]]; then
+        sudo sed -i '/zram_config/,+5d' /etc/rc.local
+    fi
     echo "ZRAM removed and configuration deleted."
+}
+
+display_zram_info() {
+    if [[ -e /sys/block/zram0 ]]; then
+        disksize=$(cat /sys/block/zram0/disksize)
+        mem_used=$(cat /sys/block/zram0/mem_used_total)
+        echo "ZRAM Information:"
+        echo "- Disk Size: $((disksize / 1024 / 1024)) MB"
+        echo "- Memory Used: $((mem_used / 1024 / 1024)) MB"
+    else
+        echo "No active ZRAM device found."
+    fi
 }
 
 install_prerequisites
 
 restore_zram
 
-# Menu for user interaction
 while true; do
     echo "Choose an option:"
     echo "1 - Create ZRAM"
     echo "2 - Delete ZRAM"
+    echo "3 - Display ZRAM Information"
     echo "q - Quit"
     read -p "Enter your choice: " choice
 
@@ -92,12 +127,15 @@ while true; do
         2)
             delete_zram
             ;;
+        3)
+            display_zram_info
+            ;;
         q)
             echo "Exiting..."
             exit 0
             ;;
         *)
-            echo "Invalid option. Please choose 1, 2, or q."
+            echo "Invalid option. Please choose 1, 2, 3, or q."
             ;;
     esac
 
