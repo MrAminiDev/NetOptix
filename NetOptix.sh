@@ -9,6 +9,18 @@ CYAN='\033[38;5;51m'            # Cyan
 MAGENTA='\033[38;5;171m'        # Magenta
 NC='\033[0m'                    # No Color
 
+create_quick_command() {
+    local quick_command_path="/usr/local/bin/netoptix"
+    echo "Creating quick command 'netoptix'..."
+    sudo bash -c "cat > $quick_command_path" << 'EOF'
+curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/netoptix.sh -o /tmp/netoptix.sh
+bash /tmp/netoptix.sh
+rm /tmp/netoptix.sh
+EOF
+    sudo chmod +x $quick_command_path
+    echo -e "${GREEN}Quick command 'netoptix' created successfully. You can now run 'netoptix' from anywhere.${NC}"
+}
+
 # Functions for Submenus
 network_optimization_menu() {
     while true; do
@@ -202,17 +214,17 @@ system_maintenance_menu() {
 # Main Menu
 while true; do
     clear
-	echo -e "${CYAN}+======================================================================+${NC}"
-	echo -e	"${RED}##    ## ######## ########  #######  ########  ######## #### ##     ## ${NC}"
-	echo -e	"${RED}###   ## ##          ##    ##     ## ##     ##    ##     ##   ##   ##  ${NC}"
-	echo -e	"${RED}####  ## ##          ##    ##     ## ##     ##    ##     ##    ## ##   ${NC}"
-	echo -e	"${RED}## ## ## ######      ##    ##     ## ########     ##     ##     ###    ${NC}"
-	echo -e	"${RED}##  #### ##          ##    ##     ## ##           ##     ##    ## ##   ${NC}"
-	echo -e	"${RED}##   ### ##          ##    ##     ## ##           ##     ##   ##   ##  ${NC}"
-	echo -e	"${RED}##    ## ########    ##     #######  ##           ##    #### ##     ## ${NC}"
-	echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.0.3${NC} "
-	echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "${RED}##    ## ######## ########  #######  ########  ######## #### ##     ## ${NC}"
+    echo -e "${RED}###   ## ##          ##    ##     ## ##     ##    ##     ##   ##   ##  ${NC}"
+    echo -e "${RED}####  ## ##          ##    ##     ## ##     ##    ##     ##    ## ##   ${NC}"
+    echo -e "${RED}## ## ## ######      ##    ##     ## ########     ##     ##     ###    ${NC}"
+    echo -e "${RED}##  #### ##          ##    ##     ## ##           ##     ##    ## ##   ${NC}"
+    echo -e "${RED}##   ### ##          ##    ##     ## ##           ##     ##   ##   ##  ${NC}"
+    echo -e "${RED}##    ## ########    ##     #######  ##           ##    #### ##     ## ${NC}"
+    echo -e "${CYAN}+======================================================================+${NC}"
+    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.1.0${NC} "
+    echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "${CYAN}== Main Menu ==${NC}"
     echo -e "1) Network Optimization"
     echo -e "2) Server & Network Management"
@@ -225,7 +237,10 @@ while true; do
         2) server_management_menu ;;
         3) security_menu ;;
         4) system_maintenance_menu ;;
-        5) echo "Exiting..." ; exit 0 ;;
+        5)
+            create_quick_command
+            echo "Exiting..."
+            exit 0 ;;
         *) echo "Invalid choice." ; sleep 2 ;;
     esac
 done
