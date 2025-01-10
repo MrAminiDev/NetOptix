@@ -84,6 +84,7 @@ restore_zram() {
 }
 
 delete_zram() {
+    sleep 2
     echo "Removing ZRAM..."
     if [[ -e /dev/zram0 ]]; then
         sudo swapoff /dev/zram0
@@ -97,6 +98,7 @@ delete_zram() {
 }
 
 display_zram_info() {
+    sleep 2
     if [[ -e /sys/block/zram0 ]]; then
         disksize=$(cat /sys/block/zram0/disksize)
         mem_used=$(cat /sys/block/zram0/mem_used_total)
@@ -117,7 +119,7 @@ while true; do
     echo "1 - Create ZRAM"
     echo "2 - Delete ZRAM"
     echo "3 - Display ZRAM Information"
-    echo "q - Quit"
+    echo "0 - Back to Main Menu"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -130,7 +132,7 @@ while true; do
         3)
             display_zram_info
             ;;
-        q)
+        0)
             echo "Exiting..."
             exit 0
             ;;
