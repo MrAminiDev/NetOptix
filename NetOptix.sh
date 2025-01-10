@@ -13,7 +13,7 @@ create_quick_command() {
     local quick_command_path="/usr/local/bin/netoptix"
     echo "Creating quick command 'netoptix'..."
     sudo bash -c "cat > $quick_command_path" << 'EOF'
-curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/netoptix.sh -o /tmp/netoptix.sh
+curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/refs/heads/main/NetOptix.sh -o /tmp/netoptix.sh
 bash /tmp/netoptix.sh
 rm /tmp/netoptix.sh
 EOF
