@@ -161,7 +161,7 @@ security_menu() {
         echo -e "${RED}== Security ==${NC}"
         echo -e "1) Install Fail2ban for SSH Security"
         echo -e "2) Block and Unblock All SpeedTest Websites"
-		echo -e "2) Install ClamAV ( Server AntiVirus )"
+	echo -e "3) Install ClamAV ( Server AntiVirus )"
         echo -e "0) Back to Main Menu"
         read -p "Enter your choice: " choice
         case $choice in
@@ -177,8 +177,8 @@ security_menu() {
                 bash /tmp/speedtest.sh
                 rm /tmp/speedtest.sh
                 ;;
-			3)
-                echo "Running ClamAV installer..."
+            3)
+	    echo "Running ClamAV installer..."
                 curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/ClamAV.sh -o /tmp/ClamAV.sh
                 bash /tmp/ClamAV.sh
                 rm /tmp/ClamAV.sh
@@ -230,7 +230,7 @@ while true; do
     echo -e "${RED}##   ### ##          ##    ##     ## ##           ##     ##   ##   ##  ${NC}"
     echo -e "${RED}##    ## ########    ##     #######  ##           ##    #### ##     ## ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.1.0${NC} "
+    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.2.0${NC} "
     echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "${CYAN}== Main Menu ==${NC}"
     echo -e "1) Network & Server Optimization"
