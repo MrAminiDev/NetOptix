@@ -21,12 +21,15 @@ uninstall_clamav() {
     sudo apt remove -y clamav clamav-daemon
     sudo apt autoremove -y
     echo "ClamAV has been uninstalled successfully."
+    echo "Use clamscan to scan the server."
+    sleep 5
 }
-
+clear
 echo "Choose an option:"
 echo "1 - Install ClamAV"
 echo "2 - Uninstall ClamAV"
-read -p "Enter your choice (1 or 2): " choice
+echo "0 - Back to Main Menu"
+read -p "Enter your choice: " choice
 
 case $choice in
     1)
@@ -34,6 +37,10 @@ case $choice in
         ;;
     2)
         uninstall_clamav
+        ;;
+     0)
+        echo "Exiting..."
+        exit 0
         ;;
     *)
         echo "Invalid choice. Please run the script again and choose 1 or 2."
