@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Auto install Swap
+# Auto install ClamAV
 #
 # System Required:  CentOS 6+, Debian8+, Ubuntu16+
 #
