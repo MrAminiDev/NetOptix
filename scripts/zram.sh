@@ -121,6 +121,7 @@ install_prerequisites
 restore_zram
 
 while true; do
+    clear
     echo "Choose an option:"
     echo "1 - Create ZRAM"
     echo "2 - Delete ZRAM"
