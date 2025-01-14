@@ -132,7 +132,7 @@ while true; do
     echo "1 - Create ZRAM"
     echo "2 - Delete ZRAM"
     echo "3 - Display ZRAM Information"
-    echo "q - Quit"
+    echo "0 - Quit"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -145,7 +145,7 @@ while true; do
         3)
             display_zram_info
             ;;
-        q)
+        0)
             echo "Exiting..."
             exit 0
             ;;
