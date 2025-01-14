@@ -21,15 +21,39 @@ uninstall_clamav() {
     sudo apt remove -y clamav clamav-daemon
     sudo apt autoremove -y
     echo "ClamAV has been uninstalled successfully."
-    echo "Use clamscan to scan the server."
-    sleep 5
+}
+
+list_clamav_commands() {
+    echo "ClamAV Common Commands:"
+    echo "1. freshclam - Update the ClamAV virus database."
+    echo "   Usage: freshclam"
+    echo "2. clamscan - Scan files or directories for viruses."
+    echo "   Options:"
+    echo "     -r : Scan directories recursively"
+    echo "     --remove : Remove infected files"
+    echo "     --log=FILE : Log scan results to a file"
+    echo "   Example: clamscan -r --remove --log=scan.log /path/to/scan"
+    echo "3. clamdscan - Scan using the ClamAV daemon for better performance."
+    echo "   Options:"
+    echo "     --multiscan : Enable multi-threaded scanning"
+    echo "     --fdpass : Pass file descriptors to clamd"
+    echo "   Example: clamdscan --multiscan /path/to/scan"
+    echo "4. clamdtop - Monitor ClamAV daemon status in real-time."
+    echo "   Usage: clamdtop"
+    echo "5. sigtool - Manage ClamAV signature files."
+    echo "   Options:"
+    echo "     --md5 : Generate MD5 checksum of a file"
+    echo "     --unpack : Unpack a ClamAV signature file"
+    echo "   Example: sigtool --md5 /path/to/file"
+    echo "6. clamsubmit - Submit files to ClamAV team for analysis."
+    echo "   Usage: clamsubmit /path/to/suspicious_file"
 }
 clear
 echo "Choose an option:"
 echo "1 - Install ClamAV"
 echo "2 - Uninstall ClamAV"
-echo "0 - Back to Main Menu"
-read -p "Enter your choice: " choice
+echo "3 - List ClamAV Commands"
+read -p "Enter your choice (1, 2, or 3): " choice
 
 case $choice in
     1)
@@ -38,11 +62,11 @@ case $choice in
     2)
         uninstall_clamav
         ;;
-     0)
-        echo "Exiting..."
-        exit 0
+    3)
+        list_clamav_commands
         ;;
     *)
-        echo "Invalid choice. Please run the script again and choose 1 or 2."
+        echo "Invalid choice. Please run the script again and choose 1, 2, or 3."
         ;;
 esac
+
