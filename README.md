@@ -42,7 +42,8 @@ Using network optimization can lead to multiple advantages:
 17. Adding a real-time server monitoring system
 18. Create and Delete ZRAM
 19. Adding a ClamAV antivirus
-20. Other features coming soon...
+20. AUTO SSL Marzban
+21. Other features coming soon...
 
 # Installation Script
 To install, simply run the following command on your server
