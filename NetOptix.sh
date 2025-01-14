@@ -237,14 +237,14 @@ while true; do
     echo -e "2) Server & Network Management"
     echo -e "3) Security"
     echo -e "4) System Maintenance"
-    echo -e "5) Exit"
+    echo -e "0) Exit"
     read -p "Enter your choice: " main_choice
     case $main_choice in
         1) network_optimization_menu ;;
         2) server_management_menu ;;
         3) security_menu ;;
         4) system_maintenance_menu ;;
-        5)
+        0)
             create_quick_command
             echo "Exiting..."
             exit 0 ;;
