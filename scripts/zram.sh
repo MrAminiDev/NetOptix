@@ -4,7 +4,7 @@
 #
 # System Required:  CentOS 6+, Debian8+, Ubuntu16+
 #
-# Copyright (C) 2024 Mr.Amini Nezhad
+# Copyright (C) 2025 Mr.Amini Nezhad
 #
 # my Github: https://github.com/MrAminiDev/
 
@@ -105,6 +105,7 @@ delete_zram() {
 }
 
 display_zram_info() {
+    clear
     if [[ -e /sys/block/zram0 ]]; then
         disksize=$(cat /sys/block/zram0/disksize)
         mem_used=$(cat /sys/block/zram0/mem_used_total)
@@ -113,6 +114,12 @@ display_zram_info() {
         echo "- Memory Used: $((mem_used / 1024 / 1024)) MB"
     else
         echo "No active ZRAM device found."
+    fi
+    echo ""
+    read -p "Press 0 to return to the menu: " return_choice
+    if [[ $return_choice == "0" ]]; then
+        clear
+        return
     fi
 }
 
@@ -143,7 +150,7 @@ while true; do
             exit 0
             ;;
         *)
-            echo "Invalid option. Please choose 1, 2, 3, or q."
+            echo "Invalid option. Please choose..."
             ;;
     esac
 
