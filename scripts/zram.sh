@@ -41,25 +41,31 @@ define_zram() {
         echo "$zram_size" | sudo tee /etc/zram_config > /dev/null
         echo "ZRAM created and activated. Configuration saved."
 
-        if [[ ! -f /etc/rc.local ]]; then
-            echo "Creating /etc/rc.local for persistence..."
-            sudo bash -c 'echo -e "#!/bin/bash\nexit 0" > /etc/rc.local'
-            sudo chmod +x /etc/rc.local
-        fi
-        sudo sed -i '/exit 0/d' /etc/rc.local
-        sudo bash -c 'cat <<EOL >> /etc/rc.local
-if [[ -f /etc/zram_config ]]; then
-    zram_size=\$(cat /etc/zram_config)
-    modprobe zram
-    echo \$((zram_size * 1024 * 1024)) > /sys/block/zram0/disksize
-    mkswap /dev/zram0
-    swapon /dev/zram0
-fi
-exit 0
-EOL'
+        # Ensure persistence across reboots using systemd service
+        create_zram_service $zram_size
     else
         echo "Invalid size entered. Please enter a numeric value in MB."
     fi
+}
+
+create_zram_service() {
+    local zram_size=$1
+    sudo bash -c "cat <<EOL > /etc/systemd/system/zram.service
+[Unit]
+Description=ZRAM Configuration
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'modprobe zram && echo \$(( ${zram_size} * 1024 * 1024 )) > /sys/block/zram0/disksize && mkswap /dev/zram0 && swapon /dev/zram0'
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+EOL"
+    sudo systemctl daemon-reload
+    sudo systemctl enable zram.service
+    echo "Systemd service for ZRAM created and enabled."
 }
 
 restore_zram() {
@@ -84,21 +90,21 @@ restore_zram() {
 }
 
 delete_zram() {
-    sleep 2
     echo "Removing ZRAM..."
     if [[ -e /dev/zram0 ]]; then
         sudo swapoff /dev/zram0
         sudo modprobe -r zram
     fi
     sudo rm -f /etc/zram_config
-    if [[ -f /etc/rc.local ]]; then
-        sudo sed -i '/zram_config/,+5d' /etc/rc.local
+    if [[ -f /etc/systemd/system/zram.service ]]; then
+        sudo systemctl disable zram.service
+        sudo rm -f /etc/systemd/system/zram.service
+        sudo systemctl daemon-reload
     fi
     echo "ZRAM removed and configuration deleted."
 }
 
 display_zram_info() {
-    sleep 2
     if [[ -e /sys/block/zram0 ]]; then
         disksize=$(cat /sys/block/zram0/disksize)
         mem_used=$(cat /sys/block/zram0/mem_used_total)
@@ -115,12 +121,11 @@ install_prerequisites
 restore_zram
 
 while true; do
-    clear
     echo "Choose an option:"
     echo "1 - Create ZRAM"
     echo "2 - Delete ZRAM"
     echo "3 - Display ZRAM Information"
-    echo "0 - Back to Main Menu"
+    echo "q - Quit"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -133,7 +138,7 @@ while true; do
         3)
             display_zram_info
             ;;
-        0)
+        q)
             echo "Exiting..."
             exit 0
             ;;
