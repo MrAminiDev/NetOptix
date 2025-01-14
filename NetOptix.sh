@@ -96,6 +96,7 @@ server_management_menu() {
         echo -e "6) Block and Unblock Iranian ISP"
         echo -e "7) Install mikrotik on Ubuntu"
         echo -e "8) Install Monitoring System (Cockpit)"
+	echo -e "9) Install Auto / manual SSL marzban"
         echo -e "0) Back to Main Menu"
         read -p "Enter your choice: " choice
         case $choice in
@@ -148,6 +149,12 @@ server_management_menu() {
                 sudo systemctl start cockpit
                 echo "Done. Access the monitoring system via IP:9090. (User: root / Password: server password)"
                 sleep 10
+                ;;
+            9)
+                echo "Running Auto SSL Marzban..."
+                curl -fsSL https://raw.githubusercontent.com/MrAminiDev/NetOptix/main/scripts/sslmarzban.sh -o /tmp/sslmarzban.sh
+                bash /tmp/sslmarzban.sh
+                rm /tmp/sslmarzban.sh
                 ;;
             0) return ;;
             *) echo "Invalid choice." ; sleep 2 ;;
@@ -230,7 +237,7 @@ while true; do
     echo -e "${RED}##   ### ##          ##    ##     ## ##           ##     ##   ##   ##  ${NC}"
     echo -e "${RED}##    ## ########    ##     #######  ##           ##    #### ##     ## ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.2.3${NC} "
+    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.3.0${NC} "
     echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "${CYAN}== Main Menu ==${NC}"
     echo -e "1) Network & Server Optimization"
