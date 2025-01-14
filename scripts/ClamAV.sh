@@ -53,7 +53,8 @@ echo "Choose an option:"
 echo "1 - Install ClamAV"
 echo "2 - Uninstall ClamAV"
 echo "3 - List ClamAV Commands"
-read -p "Enter your choice (1, 2, or 3): " choice
+echo "0 - Quit"
+read -p "Enter your choice: " choice
 
 case $choice in
     1)
@@ -64,6 +65,10 @@ case $choice in
         ;;
     3)
         list_clamav_commands
+        ;;
+        0)
+        echo "Exiting..."
+        exit 0
         ;;
     *)
         echo "Invalid choice. Please run the script again and choose 1, 2, or 3."
