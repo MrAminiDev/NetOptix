@@ -15,6 +15,7 @@ echo "Select DNS provider:"
 echo "1) Google DNS (8.8.8.8)"
 echo "2) CloudFlare (1.1.1.1)"
 echo "3) Shecan (Anti Tahrim)"
+echo "4) 403 (Anti Tahrim)"
 
 # Read user input
 read -p "Enter your choice [1-3]: " choice
@@ -41,6 +42,13 @@ case $choice in
         sed -i '/^nameserver /d' /etc/resolv.conf
         echo "nameserver 178.22.122.100" >> /etc/resolv.conf
         echo "nameserver 185.51.200.2" >> /etc/resolv.conf
+        ;;
+    4)
+        echo "Setting 403 DNS..."
+        sleep 5
+        sed -i '/^nameserver /d' /etc/resolv.conf
+        echo "nameserver 10.202.10.202" >> /etc/resolv.conf
+        echo "nameserver 10.202.10.102" >> /etc/resolv.conf
         ;;
     *)
         echo "Invalid choice. Exiting."
