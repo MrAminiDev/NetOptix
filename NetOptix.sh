@@ -237,7 +237,7 @@ while true; do
     echo -e "${RED}##   ### ##          ##    ##     ## ##           ##     ##   ##   ##  ${NC}"
     echo -e "${RED}##    ## ########    ##     #######  ##           ##    #### ##     ## ${NC}"
     echo -e "${CYAN}+======================================================================+${NC}"
-    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.3.0${NC} "
+    echo -e "|  Telegram Channel : ${MAGENTA}@AminiDev ${NC}|  Version : ${GREEN} 4.3.1${NC} "
     echo -e "${CYAN}+======================================================================+${NC}"
     echo -e "${CYAN}== Main Menu ==${NC}"
     echo -e "1) Network & Server Optimization"
